@@ -7,8 +7,13 @@ const webpack = require('webpack');
 
 // define Webpack configuration object to be exported
 let config = {
+    cache: true,
+    devtool: "eval",
     context: `${__dirname}/app`,
-    entry: './app.module.js',
+    //entry: './app.module.js',
+    entry: {
+      app: ['webpack/hot/dev-server', './app.module.js']
+    },
     output: {
         path: `${__dirname}/dist`,
         publicPath: "/dist/",
@@ -36,7 +41,11 @@ let config = {
             {
                 test: /\.js?$/,
                 include: `${__dirname}/app`,
-                loader: 'babel'
+                loader: 'babel',
+                query: {
+                    cacheDirectory: true, //important for performance
+                    presets: ["es2015"]
+                }
             }
         ],
         preLoaders: [
@@ -48,6 +57,7 @@ let config = {
         ]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new cleanPlugin(['dist']),
         new ngAnnotatePlugin({
             add: true
