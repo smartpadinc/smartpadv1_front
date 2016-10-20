@@ -6,7 +6,7 @@ export default class LandingController {
 	/* @ngInject */
 	constructor($scope){
     $scope.scopeObj = {
-      value : "Using webpack dev server. Hmm"
+      value : "Using webpack dev server."
     };
     console.log("reload");
     this.thisObj = {

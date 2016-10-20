@@ -4,6 +4,7 @@
 const cleanPlugin = require('clean-webpack-plugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // define Webpack configuration object to be exported
 let config = {
@@ -21,14 +22,15 @@ let config = {
     },
     resolve: {
         alias: {
-          'npm': `${__dirname}/node_modules`
-        }
+          'npm': `${__dirname}/node_modules`,
+          'assets': `${__dirname}/assets`
+        },
     },
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loader: 'style!css'
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
             },
             {
                 test: /\.(woff|woff2)$/,
@@ -66,7 +68,7 @@ let config = {
             compress: {
                 warnings: false
             }
-        })
+        }),
     ]
 };
 
