@@ -1,6 +1,4 @@
-(function () {
-   'use strict';
-}());
+"use strict";
 
 import angular from 'npm/angular';
 import ngAria from 'npm/angular-aria';

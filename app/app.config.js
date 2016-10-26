@@ -1,6 +1,4 @@
-(function () {
-   'use strict';
-}());
+"use strict";
 
 export default class AppConfig {
   /* @ngInject */
