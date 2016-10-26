@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // import Webpack plugins
 const cleanPlugin = require('clean-webpack-plugin');
