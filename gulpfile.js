@@ -23,7 +23,7 @@ gulp.task('sass:concat', function() {
     .pipe(gulp.dest('./assets/'));
 });
 
-gulp.task('sass:build', function() {
+gulp.task('sass:build', ['clean-build','sass:concat'], function() {
   console.log("(Development) Rebuilding sass file...")
   return gulp.src('./assets/app.scss')
     .pipe(sass.sync().on('error', sass.logError))
@@ -38,9 +38,9 @@ gulp.task('sass:cache-bust', function () {
 });
 
 gulp.task('sass:compile',['clean-build','sass:concat','sass:build'], function() {
-  console.log("Assets compiled successfully");
+  console.log("(Development) Assets compiled successfully");
 });
 
 gulp.task('sass:watch-dev', function () {
-  gulp.watch('./sass/**/*.scss', ['sass:compile']);
+  gulp.watch('./assets/**/*.scss', ['sass:compile']);
 });
