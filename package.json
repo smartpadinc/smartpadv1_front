@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-build": "webpack -d --display-modules --progress --watch-poll",
     "dist-build": "webpack -p --display-modules --progress",
-    "start": "concurrently \"webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll\"  "
+    "start": "concurrently \"webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll\" \"gulp sass:watch-dev\"  "
   },
   "author": "",
   "license": "ISC",
