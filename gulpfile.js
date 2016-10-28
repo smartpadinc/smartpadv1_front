@@ -16,16 +16,16 @@ gulp.task('clean-build', function () {
     return gulp.src("./build").pipe(clean({force: true}))
 });
 
-gulp.task('sass:concat', function() {
+gulp.task('sass:concat',['clean-build'], function() {
   console.log("(Development) Compiling all sass files...");
   return gulp.src('./assets/**/*.scss')
     .pipe(concat('app.scss'))
-    .pipe(gulp.dest('./assets/'));
+    .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('sass:build', ['clean-build','sass:concat'], function() {
+gulp.task('sass:build', ['sass:concat'], function() {
   console.log("(Development) Rebuilding sass file...")
-  return gulp.src('./assets/app.scss')
+  return gulp.src('./build/app.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./build'));
