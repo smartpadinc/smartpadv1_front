@@ -22,16 +22,17 @@ let config = {
     },
     resolve: {
         alias: {
-          'npm': `${__dirname}/node_modules`,
-          'assets': `${__dirname}/assets`
+          'npm'    : `${__dirname}/node_modules`,
+          'assets' : `${__dirname}/assets`,
+          'buld'   : `${__dirname}/build`,
         },
     },
     module: {
         loaders: [
-            {
+            /*{
                 test: /\.scss$/,
                 loaders: ["style", "css", "sass"]
-            },
+            },*/
             {
                 test: /\.(woff|woff2)$/,
                 loader: 'url?limit=10000&mimetype=application/font-woff'
