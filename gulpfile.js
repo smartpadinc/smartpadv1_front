@@ -7,6 +7,11 @@ const clean  = require('gulp-clean');
 const Bust   = require('gulp-bust');
 const buster = new Bust({ production: true });
 
+const components = {
+  'bootstrap'   : 'node_modules/bootstrap-sass',
+  'fontawesome' : 'node_modules/font-awesome',
+};
+
 gulp.task('default', function() {
 
 });
@@ -16,9 +21,28 @@ gulp.task('clean-build', function () {
     return gulp.src("./build").pipe(clean({force: true}))
 });
 
-gulp.task('sass:concat',['clean-build'], function() {
+gulp.task('cp:components', function () {
+  console.log("(Development) Copy components");
+  return gulp.src([
+    components.bootstrap + '/**',
+    components.fontawesome + '/**',
+  ],{"base":"./node_modules/"})
+  .pipe(gulp.dest('assets/components'));
+});
+
+gulp.task('sass:compile-lib', function () {
+  console.log("(Development) Copy components");
+  return gulp.src('./assets/lib.scss')
+  .pipe(sass({includePaths: ['./assets/components']}))
+  .pipe(gulp.dest('./build/'))
+});
+
+gulp.task('sass:concat',['clean-build','cp:components'], function() {
   console.log("(Development) Compiling all sass files...");
-  return gulp.src('./assets/**/*.scss')
+  return gulp.src([
+    './assets/common/**/*.scss',
+    './assets/lib.scss',
+  ])
     .pipe(concat('app.scss'))
     .pipe(gulp.dest('./build/'));
 });
@@ -27,7 +51,10 @@ gulp.task('sass:build', ['sass:concat'], function() {
   console.log("(Development) Rebuilding sass file...")
   return gulp.src('./build/app.scss')
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: ['./assets/components','./assets']
+    }).on('error', sass.logError))
     .pipe(gulp.dest('./build'));
 });
 
@@ -37,7 +64,7 @@ gulp.task('sass:cache-bust', function () {
     .pipe(gulp.dest('./build/bust'));
 });
 
-gulp.task('sass:compile',['clean-build','sass:concat','sass:build'], function() {
+gulp.task('sass:compile',['clean-build','cp:components','sass:concat','sass:build'], function() {
   console.log("(Development) Assets compiled successfully");
 });
 
