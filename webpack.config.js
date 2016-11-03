@@ -13,7 +13,10 @@ let config = {
     context: `${__dirname}/app`,
     //entry: './app.module.js',
     entry: {
-      app: ['webpack/hot/dev-server', './app.module.js']
+      app: [
+        'webpack/hot/dev-server',
+        './app.module.js'
+      ]
     },
     output: {
         path: `${__dirname}/dist`,
