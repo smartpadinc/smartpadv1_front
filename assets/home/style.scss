@@ -1,0 +1,543 @@
+@font-face {
+	font-family: 'Conv_FontFont - MarkPro-Bold';
+	src: url('#{$template-font-path}FontFont - MarkPro-Bold.eot');
+	src: local('☺'), url('#{$template-font-path}FontFont - MarkPro-Bold.woff') format('woff'),
+	url('#{$template-font-path}FontFont - MarkPro-Bold.ttf') format('truetype'),
+	url('#{$template-font-path}FontFont - MarkPro-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Conv_FontFont - MarkPro-Light';
+	src: url('#{$template-font-path}FontFont - MarkPro-Light.eot');
+	src: local('☺'), url('#{$template-font-path}FontFont - MarkPro-Light.woff') format('woff'),
+	url('#{$template-font-path}FontFont - MarkPro-Light.ttf') format('truetype'),
+	url('#{$template-font-path}FontFont - MarkPro-Light.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'museo100';
+    src: url('#{$template-font-path}museo100-regular_0-webfont.eot');
+    src: url('#{$template-font-path}museo100-regular_0-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$template-font-path}museo100-regular_0-webfont.woff2') format('woff2'),
+         url('#{$template-font-path}museo100-regular_0-webfont.woff') format('woff'),
+         url('#{$template-font-path}museo100-regular_0-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- VARIABLES -- */
+
+$white: #fff;
+$violet: #7e57c2;
+$green: #27ae60;
+$orange: #ff9800;
+$black: #000;
+$grayish-black: #484949;
+$markpro-bold: 'Conv_FontFont - MarkPro-Bold';
+$markpro-light: 'Conv_FontFont - MarkPro-Light';
+$museo100: 'museo100';
+
+.markpro-bold { font-family: $markpro-bold; }
+.markpro-light { font-family: $markpro-light; }
+.violet-text { color: $violet; }
+.green-text { color: $green; }
+.bg-cover {
+	-ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+h1,h2, h3 { font-family: $markpro-bold; }
+h1 { font-size: 50px; }
+h2 { font-size: 40px; }
+h3 { font-size: 30px; }
+
+
+/* -- BODY -- */
+
+html, body, .wrapper {
+	height: 100%;
+}
+body {
+	font-size: 16px;
+	font-family: $markpro-light;
+}
+.wrapper {
+	position: relative;
+}
+.onepcssgrid-1200 {
+	max-width: 1024px;
+}
+.btn {
+	font-family: $markpro-bold;
+	color: white;
+	display: block;
+	text-align: center;
+	border-radius: 6px;
+	border: none;
+	outline: none;
+	padding: 9px 7px 6px;
+}
+.btn-orange {
+	background: $orange;
+
+}
+.btn-green {
+	background: $green;
+}
+.image-opacity {
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/* -- CONTENT: COMING SOON --*/
+#coming-soon {
+	background: rgba(255,255,255,0.85);
+	padding: 28px;
+	position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    width: 570px;
+    height: 474;
+    margin: -237px auto 0;
+
+	.logo {
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	.details {
+		color: $grayish-black;
+		font-size: 25px;
+		font-family: $markpro-light;
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	.email-wrapper {
+		width: 513px;
+    	margin: 20px auto 0;
+
+		.email {
+			font-family: $markpro-bold;
+			background: $green;
+			padding: 15px 50px;
+			color: $white;
+			font-size: 20px;
+			outline: none;
+			border: none;
+			width: 395px;
+			margin-right: -5px;
+
+			&[placeholder] {
+
+			}
+
+			&::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			    color: darken($green, 20%);
+			}
+			&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+			   color: $green;
+			   opacity:  1;
+			}
+			&::-moz-placeholder { /* Mozilla Firefox 19+ */
+			   color: $green;
+			   opacity:  1;
+			}
+			&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			   color: darken($green, 20%);
+			}
+		}
+
+		.submit {
+			background: $violet;
+			font-size: 20px;
+			font-family: $markpro-bold;
+			padding: 15px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			color: $white;
+		}
+	}
+}
+
+/* -- CONTENT: HOME PAGE -- */
+
+/* Navigation */
+.topbar {
+	background: rgba(0,0,0,0.5);
+	padding: 15px;
+	overflow: auto;
+}
+.logo-wrapper {
+	float: left;
+	width: 240px;
+	height: 60px;
+
+	#logo {
+		background: url('#{$template-image-path}smartpad-logo.png') no-repeat;
+		@extend .bg-cover;
+		width: 202px;
+		display: block;
+		outline: none;
+		height: 60px;
+	}
+}
+nav {
+	float: right;
+	margin-top: 15px;
+
+	li {
+		margin-left: 12px;
+		float: left;
+
+		&.login {
+			border-left: 1px solid $white;
+			padding-left: 12px;
+		}
+	}
+	a.btn {
+		border: 1px solid $white;
+		text-transform: uppercase;
+		font-family: $markpro-light;
+		color: $white;
+		font-size: 13px;
+		line-height: 9px;
+
+		&:hover {
+			border: 1px solid $green;
+		}
+
+		&:focus {
+			background: $green;
+			border: 1px solid $green;
+		}
+
+		&.btn-orange {
+			border: none;
+		}
+	}
+}
+
+/* First Section */
+
+#first {
+    background: url('#{$template-image-path}first-section-bg.jpeg') no-repeat center;
+    @extend .bg-cover;
+    position: relative;
+
+    .inner-wrapper {
+    	position: absolute;
+		top: 50%;
+		left: 0;
+    	right: 0;
+		transform: translateY(-50%);
+    }
+    .onerow {
+    	overflow: auto;
+    }
+    h1 {
+    	color: $white;
+    	text-transform: uppercase;
+    	text-shadow: 0 5px 12px $black;
+    	text-align: center;
+    }
+    .locations {
+    	overflow: auto;
+    	margin: 30px auto;
+    	width: 826px;
+
+    	li {
+    		margin-bottom: 20px;
+    		width: 258px;
+	    }
+    }
+    .btn-green {
+    	border-radius: 10px;
+    	font-size: 30px;
+    	padding: 12px 0;
+    	color: $white;
+    }
+    h3 {
+    	color: $white;
+    	text-align: center;
+    	text-shadow: 0 5px 12px $black;
+    	margin-bottom: 30px;
+    }
+    .search-wrapper {
+    	overflow: auto;
+    	background: $white;
+    	border-radius: 9px;
+    	padding: 10px;
+    	margin: 0 auto;
+    	width: 826px;
+
+    	input {
+    		background: none;
+    		outline: none;
+    		border: none;
+    		color: $black !important;
+    		font-family: $markpro-light;
+			font-size: 24px;
+			margin: 5px 0 0 20px;
+		    width: 70%;
+		    display: block;
+		    float: left;
+
+    		&[placeholder] {
+    			color: #919090;
+    		}
+    	}
+
+    	.search {
+    		width: 130px;
+		    font-size: 20px;
+		    float: right;
+		    color: $white;
+
+		    img {
+		    	display: block;
+			    float: right;
+			    margin-top: 4px;
+		    }
+    	}
+    }
+}
+
+#second {
+	padding: 30px;
+
+	h2 {
+		border-bottom: 1px solid #c3c4c5;
+		padding-bottom: 24px;
+		margin-bottom: 30px;
+		color: $grayish-black;
+		text-align: center;
+	}
+	.features {
+		overflow: auto;
+
+		li {
+			font-family: $museo100;
+			line-height: 28px;
+
+			.feature {
+				width: 90px;
+				height: 108px;
+				border-bottom: 8px solid $orange;
+				object-fit: none;
+				display: block;
+				margin: 0 auto 30px;
+
+				&.feature1 {
+					object-position: 0 0;
+				}
+				&.feature2 {
+					object-position: 0 -90px;
+				}
+				&.feature3 {
+					object-position: 0 -200px;
+				}
+				&.feature4 {
+					object-position: 0 -300px;
+				}
+			}
+		}
+	}
+}
+
+#third {
+	background: url('#{$template-image-path}third-section-bg.jpg') no-repeat center;
+    @extend .bg-cover;
+    position: relative;
+    color: $white;
+
+    .image-opacity {
+    	padding: 30px;
+    }
+	h2 {
+		border-bottom: 1px solid $white;
+		padding-bottom: 24px;
+		margin-bottom: 40px;
+		color: $white;
+		text-align: center;
+	}
+	li {
+		font-family: $museo100;
+		line-height: 28px;
+
+		margin-bottom: 40px;
+
+		.ro-feature {
+			width: 72px;
+			height: 84px;
+			border-bottom: 6px solid $white;
+			object-fit: none;
+			display: block;
+
+			&.ro-feature1 {
+				object-position: -98px 0;
+			}
+			&.ro-feature2 {
+				object-position: -98px -90px;
+			}
+			&.ro-feature3 {
+				object-position: -98px -164px;
+			}
+		}
+
+		p {
+			margin-top: -8px;
+		}
+		h3 {
+			font-family: $markpro-bold;
+		}
+	}
+
+	.ro-form {
+		margin-top: 30px;
+	}
+	.form-field {
+		border: 1px solid $white;
+		background: none;
+		outline: none;
+		border-radius: 10px;
+		font-family: $museo100;
+		font-size: 25px;
+		margin-bottom: 20px;
+		padding: 10px;
+	}
+	.btn-submit {
+		background: $orange;
+		color: $white;
+		font-size: 25px;
+		float: right;
+	}
+}
+
+#fourth {
+	background: $black;
+	height: 205px;
+	padding: 30px;
+	width: 100%;
+
+	footer {
+		ul {
+			overflow: auto;
+
+			li {
+				margin-right: 30px;
+				float: left;
+
+				a {
+					color: $white;
+					font-family: $markpro-bold;
+					font-size: 15px;
+					display: block;
+
+					&:active, &:hover {
+						color: $green;
+
+					}
+
+					span {
+						font-size: 11px;
+						color: $orange;
+					}
+				}
+			}
+		}
+
+		p.copyright {
+			color: $white;
+			margin-top: 114px;
+			font-size: 13px;
+		}
+
+		.social-media{
+			float: right;
+			overflow: auto;
+
+			.icon {
+				width: 40px;
+				height: 40px;
+				display: block;
+				float: left;
+			}
+			#facebook {
+				background: url('#{$template-image-path}icons-sprite.png') no-repeat;
+				background-position: -100px -245px;
+				margin-right: 10px;
+			}
+			#twitter {
+				background: url('#{$template-image-path}icons-sprite.png') no-repeat;
+				background-position: -100px -290px;
+			}
+		}
+
+		.email {
+			font-size: 20px;
+			font-family: $markpro-light;
+			color: $white;
+			text-align: right;
+			margin-top: 126px;
+		}
+	}
+}
+
+
+
+/* Sweep To Right */
+.hvr-sweep-to-right {
+  display: inline-block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-sweep-to-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: darken($violet, 20%);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-sweep-to-right:hover, .hvr-sweep-to-right:focus, .hvr-sweep-to-right:active {
+  color: white;
+}
+.hvr-sweep-to-right:hover:before, .hvr-sweep-to-right:focus:before, .hvr-sweep-to-right:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
