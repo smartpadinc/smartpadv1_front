@@ -10,10 +10,14 @@ export default class LandingController {
     this.thisObj = {
       value: "Using this"
     };
+
+		$('#jq').html('test');
 	}
 
   helloWord() {
     console.log("Hello World 1234");
   }
+
+
 
 }
