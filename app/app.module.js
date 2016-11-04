@@ -7,11 +7,11 @@ import uiRouter from 'npm/angular-ui-router';
 import $ from 'npm/jquery';
 import jQuery from 'npm/jquery';
 
-window.$ = $;
-window.jQuery = jQuery;
-
 import {default as AppConfig} from './app.config';
 import {default as LandingModule} from './landing/landing.module';
+
+window.$ = $;
+window.jQuery = jQuery;
 
 angular
   .module('app', [

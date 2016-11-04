@@ -10,7 +10,8 @@ export default class AppConfig {
        views: {
          "main": {
            controller: 'LandingController',
-           templateUrl: "public/partials/home/index.html",
+           controllerAs: 'home',
+           templateUrl: "public/partials/home/index.html"
          }
        },
     });

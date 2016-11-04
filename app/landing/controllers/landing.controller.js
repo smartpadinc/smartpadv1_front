@@ -2,16 +2,19 @@
 
 export default class LandingController {
 	/* @ngInject */
-	constructor($scope){
-    $scope.scopeObj = {
-      value : "Using webpack dev server."
-    };
-    console.log("reload");
+	constructor($scope, $timeout){
+
     this.thisObj = {
       value: "Using this"
     };
 
-		$('#jq').html('test');
+		$timeout(function() {
+			let vph = $(window).height();
+			$('.image-bg').height(vph);
+			$('#third.image-bg').height(vph); // 205 is footer's height
+
+		},10);
+
 	}
 
   helloWord() {

@@ -45,10 +45,16 @@ $museo100: 'museo100';
 .green-text { color: $green; }
 .bg-cover {
 	-ms-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+@mixin bg-cover {
+	-ms-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 h1,h2, h3 { font-family: $markpro-bold; }
@@ -188,7 +194,7 @@ body {
 
 	#logo {
 		background: url('#{$template-image-path}smartpad-logo.png') no-repeat;
-		@extend .bg-cover;
+		@include bg-cover;
 		width: 202px;
 		display: block;
 		outline: none;
@@ -235,7 +241,7 @@ nav {
 
 #first {
     background: url('#{$template-image-path}first-section-bg.jpeg') no-repeat center;
-    @extend .bg-cover;
+    @include bg-cover;
     position: relative;
 
     .inner-wrapper {
@@ -360,7 +366,7 @@ nav {
 
 #third {
 	background: url('#{$template-image-path}third-section-bg.jpg') no-repeat center;
-    @extend .bg-cover;
+    @include bg-cover;
     position: relative;
     color: $white;
 

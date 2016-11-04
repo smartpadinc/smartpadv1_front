@@ -112,7 +112,7 @@ gulp.task('mv:fonts',['clean:fonts'], function() {
   return gulp.src([
     'node_modules/bootstrap-sass/assets/fonts/bootstrap/**',
     'node_modules/font-awesome/fonts/**',
-    'assets/**/*.{ttf,woff,eof,svg}',
+    'assets/**/*.{ttf,woff,woff2,eof,svg}',
   ])
   .pipe(flatten())
   .pipe(gulp.dest('build/fonts',{overwrite: true}));
