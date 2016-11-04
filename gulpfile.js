@@ -6,6 +6,7 @@ const concat      = require('gulp-concat');
 const clean       = require('gulp-clean');
 const Bust        = require('gulp-bust');
 const del         = require('del');
+const flatten     = require('gulp-flatten');
 const vinylPaths  = require('vinyl-paths');
 const buster      = new Bust({ production: true });
 
@@ -30,6 +31,15 @@ gulp.task('clean:fonts', function() {
   console.log("Cleaning fonts folder...");
   return gulp.src([
     'build/fonts/'
+  ])
+  .pipe(vinylPaths(del));
+});
+
+/* Clean fonts folder on build dir */
+gulp.task('clean:images', function() {
+  console.log("Cleaning images folder...");
+  return gulp.src([
+    'build/images/'
   ])
   .pipe(vinylPaths(del));
 });
@@ -78,10 +88,12 @@ gulp.task('sass:build', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('sass:compile',['clean:build','sass:concat','mv:component-fonts','sass:build'], function() {
+/* rebuild and compile everything from start */
+gulp.task('sass:compile',['clean:build','sass:concat','mv:fonts','mv:images','sass:build'], function() {
   console.log("(Development) Assets compiled successfully");
 });
 
+/* Rebuild only the css related stuff */
 gulp.task('sass:compile-fast',['clean:style','sass:concat','sass:build'], function() {
   console.log("Compiling assets quickly...");
 });
@@ -94,27 +106,27 @@ gulp.task('sass:watch-dev', function () {
   ## UTILITIES ##
 */
 
-/* Move the fonts folder of 3rd party frameworks  */
-gulp.task('mv:component-fonts',['clean:fonts'], function() {
-  console.log("(Development) Moving components static assets to build folder");
+/* Move the all fonts folder  */
+gulp.task('mv:fonts',['clean:fonts'], function() {
+  console.log("(Development) Moving all fonts to build folder");
   return gulp.src([
     'node_modules/bootstrap-sass/assets/fonts/bootstrap/**',
     'node_modules/font-awesome/fonts/**',
+    'assets/**/*.{ttf,woff,eof,svg}',
   ])
+  .pipe(flatten())
   .pipe(gulp.dest('build/fonts',{overwrite: true}));
 });
 
-
-/* ongoing function */
-gulp.task('cp:components', function () {
-  console.log("(Development) Copy components");
+/* Move the all images  */
+gulp.task('mv:images',['clean:images'], function() {
+  console.log("(Development) Moving all images to build folder");
   return gulp.src([
-    components.bootstrap + '/**',
-    components.fontawesome + '/**',
-  ],{"base":"./node_modules/"})
-  .pipe(gulp.dest('assets/components'));
+    'assets/**/*.{jpg,jpeg,png,tif}',
+  ])
+  .pipe(flatten())
+  .pipe(gulp.dest('build/images',{overwrite: true}));
 });
-
 
 /* ongoing function */
 gulp.task('sass:cache-bust', function () {
