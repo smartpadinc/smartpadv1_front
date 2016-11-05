@@ -11,7 +11,7 @@ export default class AppConfig {
          "main": {
            controller: 'LandingController',
            controllerAs: 'home',
-           template: require('templates/landing/test.pug')
+           template: require('templates/landing/home.pug')
          }
        },
     });
