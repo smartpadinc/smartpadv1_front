@@ -25,9 +25,12 @@ let config = {
     },
     resolve: {
         alias: {
-          'npm'    : `${__dirname}/node_modules`,
-          'assets' : `${__dirname}/assets`,
-          'buld'   : `${__dirname}/build`,
+          'npm'         : `${__dirname}/node_modules`,
+          'assets'      : `${__dirname}/assets`,
+          'build'       : `${__dirname}/build`,
+
+          'templates'   : `${__dirname}/app/templates`,
+          'components'  : `${__dirname}/app/components`,
         },
     },
     module: {
@@ -35,7 +38,7 @@ let config = {
             /*{
                 test: /\.scss$/,
                 loaders: ["style", "css", "sass"]
-            },*/
+            },
             {
                 test: /\.(woff|woff2)$/,
                 loader: 'url?limit=10000&mimetype=application/font-woff'
@@ -43,6 +46,12 @@ let config = {
             {
                 test: /\.(eot|svg|ttf)$/,
                 loader: 'file'
+            },
+            */
+            {
+                //test: /\.jade$/,
+                include: /\.pug/,
+                loader: 'pug-html-loader',
             },
             {
                 test: /\.js?$/,
