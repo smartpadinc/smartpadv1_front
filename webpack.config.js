@@ -1,10 +1,11 @@
 "use strict";
 
 // import Webpack plugins
-const cleanPlugin = require('clean-webpack-plugin');
-const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const cleanPlugin       = require('clean-webpack-plugin');
+const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
+const webpack           = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // define Webpack configuration object to be exported
 let config = {
@@ -15,7 +16,7 @@ let config = {
     entry: {
       app: [
         'webpack/hot/dev-server',
-        './app.module.js'
+        './app.module.js',
       ]
     },
     output: {
@@ -25,10 +26,10 @@ let config = {
     },
     resolve: {
         alias: {
+          'base'        : `${__dirname}`,
           'npm'         : `${__dirname}/node_modules`,
           'assets'      : `${__dirname}/assets`,
           'build'       : `${__dirname}/build`,
-
           'templates'   : `${__dirname}/app/templates`,
           'components'  : `${__dirname}/app/components`,
         },
@@ -48,6 +49,10 @@ let config = {
                 loader: 'file'
             },
             */
+            {
+                include: `${__dirname}/config.json`,
+                loader: 'json',
+            },
             {
                 //test: /\.jade$/,
                 include: /\.pug/,
@@ -72,16 +77,16 @@ let config = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new cleanPlugin(['dist']),
-        new ngAnnotatePlugin({
-            add: true
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+      new webpack.HotModuleReplacementPlugin(),
+      new cleanPlugin(['dist']),
+      new ngAnnotatePlugin({
+          add: true
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+          compress: {
+              warnings: false
+          }
+      }),
     ]
 };
 

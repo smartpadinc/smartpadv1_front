@@ -15,7 +15,5 @@ export default class AppConfig {
          }
        },
     });
-
   }
-
 }
