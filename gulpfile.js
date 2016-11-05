@@ -1,14 +1,17 @@
 "use strict";
 
-const gulp        = require('gulp');
-const sass        = require('gulp-sass');
-const concat      = require('gulp-concat');
-const clean       = require('gulp-clean');
-const Bust        = require('gulp-bust');
-const del         = require('del');
-const flatten     = require('gulp-flatten');
-const vinylPaths  = require('vinyl-paths');
-const buster      = new Bust({ production: true });
+const gulp          = require('gulp');
+const sass          = require('gulp-sass');
+const concat        = require('gulp-concat');
+const clean         = require('gulp-clean');
+const Bust          = require('gulp-bust');
+const del           = require('del');
+const flatten       = require('gulp-flatten');
+const vinylPaths    = require('vinyl-paths');
+const autoprefixer  = require('gulp-autoprefixer');
+const cssmin        = require('gulp-cssmin');
+const buster        = new Bust({ production: true });
+
 
 const sassInclude = {
   'bootstrap'   : 'node_modules/bootstrap-sass',
@@ -88,13 +91,24 @@ gulp.task('sass:build', function() {
     .pipe(gulp.dest('build'));
 });
 
+gulp.task('css:optimize', function () {
+  console.log("(Development) Optimizing css...")
+  return gulp.src('build/app.css')
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(cssmin())
+    .pipe(gulp.dest('build'));
+});
+
 /* rebuild and compile everything from start */
-gulp.task('sass:compile',['clean:build','sass:concat','mv:fonts','mv:images','sass:build'], function() {
+gulp.task('sass:compile',['clean:build','sass:concat','mv:fonts','mv:images','sass:build','css:optimize'], function() {
   console.log("(Development) Assets compiled successfully");
 });
 
 /* Rebuild only the css related stuff */
-gulp.task('sass:compile-fast',['clean:style','sass:concat','sass:build'], function() {
+gulp.task('sass:compile-fast',['clean:style','sass:concat','sass:build','css:optimize'], function() {
   console.log("Compiling assets quickly...");
 });
 
