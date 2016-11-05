@@ -1,12 +1,14 @@
-"use strict";
+'use strict';
 
 export default class LandingController {
 	/* @ngInject */
-	constructor($scope, $timeout){
-
+	constructor($scope, $timeout, globalConfig){
+		console.log(globalConfig.development);
     this.thisObj = {
       value: "Using this"
     };
+
+		var a = "MUST BE UNDEFINED";
 
 		$timeout(function() {
 			let vph = $(window).height();
