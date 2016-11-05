@@ -2,7 +2,11 @@
   "browser": true,
   "globals": {
     "console":false,
-    "$": false
+    "$": false,
+    "node": false,
+    "__dirname": false,
+    "require": false,
+    "module": false
   },
   "strict": "global",
   "esversion": 6
