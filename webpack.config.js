@@ -5,7 +5,7 @@ const cleanPlugin       = require('clean-webpack-plugin');
 const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 const webpack           = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // define Webpack configuration object to be exported
 let config = {
@@ -16,7 +16,7 @@ let config = {
     entry: {
       app: [
         'webpack/hot/dev-server',
-        './app.module.js',
+        './app.module.js'
       ]
     },
     output: {
@@ -30,6 +30,7 @@ let config = {
           'npm'         : `${__dirname}/node_modules`,
           'assets'      : `${__dirname}/assets`,
           'build'       : `${__dirname}/build`,
+
           'templates'   : `${__dirname}/app/templates`,
           'components'  : `${__dirname}/app/components`,
         },
@@ -49,6 +50,7 @@ let config = {
                 loader: 'file'
             },
             */
+
             {
                 include: `${__dirname}/config.json`,
                 loader: 'json',
@@ -77,16 +79,29 @@ let config = {
         ]
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new cleanPlugin(['dist']),
-      new ngAnnotatePlugin({
-          add: true
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-          compress: {
-              warnings: false
-          }
-      }),
+        new HtmlWebpackPlugin({
+          //hash: true,
+          filename: `${__dirname}/index.html`,
+          template: './index.html',
+          environment: "Development",
+          // minify: {
+          //   collapseWhitespace: true,
+          //   removeComments: true,
+          //   removeRedundantAttributes: true,
+          //   removeScriptTypeAttributes: true,
+          //   removeStyleLinkTypeAttributes: true
+          // }
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new cleanPlugin(['dist']),
+        new ngAnnotatePlugin({
+            add: true
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
     ]
 };
 
@@ -94,5 +109,6 @@ let config = {
 // https://github.com/webpack/docs/wiki/build-performance/99b3c2758589c35d62c3cdc03e312682de31dd6b
 // https://webpack.github.io/docs/build-performance.html
 // http://cheng.logdown.com/posts/2016/03/25/679045
+// https://www.jonathan-petitcolas.com/2016/01/23/webpack-html-plugin-in-a-nutshell.html
 
 module.exports = config;

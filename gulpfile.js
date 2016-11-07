@@ -77,7 +77,7 @@ gulp.task('sass:concat',['clean:sass-main'], function() {
   then generate the actual css files
 */
 gulp.task('sass:build', function() {
-  console.log("(Development) Rebuilding sass files...")
+  console.log("(Development) Rebuilding sass files...");
   return gulp.src('assets/app.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({
@@ -92,7 +92,7 @@ gulp.task('sass:build', function() {
 });
 
 gulp.task('css:optimize', function () {
-  console.log("(Development) Optimizing css...")
+  console.log("(Development) Optimizing css...");
   return gulp.src('build/app.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
