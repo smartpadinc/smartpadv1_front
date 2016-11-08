@@ -20,3 +20,4 @@ __pycache__
 smartpadv1_front.conf
 build/
 assets/app.scss
+index.html

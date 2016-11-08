@@ -1,11 +1,8 @@
 "use strict";
 
-// import Webpack plugins
+const webpack           = require('webpack');
 const cleanPlugin       = require('clean-webpack-plugin');
 const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
-const webpack           = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // define Webpack configuration object to be exported
 let config = {
@@ -16,7 +13,7 @@ let config = {
     entry: {
       app: [
         'webpack/hot/dev-server',
-        './app.module.js',
+        './app.module.js'
       ]
     },
     output: {
@@ -36,28 +33,9 @@ let config = {
     },
     module: {
         loaders: [
-            /*{
-                test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
-            {
-                test: /\.(woff|woff2)$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
-            },
-            {
-                test: /\.(eot|svg|ttf)$/,
-                loader: 'file'
-            },
-            */
-            {
-                include: `${__dirname}/config.json`,
-                loader: 'json',
-            },
-            {
-                //test: /\.jade$/,
-                include: /\.pug/,
-                loader: 'pug-html-loader',
-            },
+            /*{ test: /\.scss$/, loaders: ["style", "css", "sass"] }, */
+            { include: `${__dirname}/config.json`, loader: 'json', },
+            { include: /\.pug/, loader: 'pug-html-loader', },
             {
                 test: /\.js?$/,
                 include: `${__dirname}/app`,
@@ -77,16 +55,14 @@ let config = {
         ]
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new cleanPlugin(['dist']),
-      new ngAnnotatePlugin({
+        new ngAnnotatePlugin({
           add: true
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-          compress: {
-              warnings: false
-          }
-      }),
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
     ]
 };
 
@@ -94,5 +70,7 @@ let config = {
 // https://github.com/webpack/docs/wiki/build-performance/99b3c2758589c35d62c3cdc03e312682de31dd6b
 // https://webpack.github.io/docs/build-performance.html
 // http://cheng.logdown.com/posts/2016/03/25/679045
+// https://www.jonathan-petitcolas.com/2016/01/23/webpack-html-plugin-in-a-nutshell.html
+// https://github.com/kitconcept/webpack-starter-angular
 
 module.exports = config;
