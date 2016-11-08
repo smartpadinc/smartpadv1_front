@@ -1,11 +1,8 @@
 "use strict";
 
-// import Webpack plugins
+const webpack           = require('webpack');
 const cleanPlugin       = require('clean-webpack-plugin');
 const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
-const webpack           = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // define Webpack configuration object to be exported
 let config = {
@@ -30,36 +27,15 @@ let config = {
           'npm'         : `${__dirname}/node_modules`,
           'assets'      : `${__dirname}/assets`,
           'build'       : `${__dirname}/build`,
-
           'templates'   : `${__dirname}/app/templates`,
           'components'  : `${__dirname}/app/components`,
         },
     },
     module: {
         loaders: [
-            /*{
-                test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
-            {
-                test: /\.(woff|woff2)$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
-            },
-            {
-                test: /\.(eot|svg|ttf)$/,
-                loader: 'file'
-            },
-            */
-
-            {
-                include: `${__dirname}/config.json`,
-                loader: 'json',
-            },
-            {
-                //test: /\.jade$/,
-                include: /\.pug/,
-                loader: 'pug-html-loader',
-            },
+            /*{ test: /\.scss$/, loaders: ["style", "css", "sass"] }, */
+            { include: `${__dirname}/config.json`, loader: 'json', },
+            { include: /\.pug/, loader: 'pug-html-loader', },
             {
                 test: /\.js?$/,
                 include: `${__dirname}/app`,
@@ -79,23 +55,8 @@ let config = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-          //hash: true,
-          filename: `${__dirname}/index.html`,
-          template: './index.html',
-          environment: "Development",
-          // minify: {
-          //   collapseWhitespace: true,
-          //   removeComments: true,
-          //   removeRedundantAttributes: true,
-          //   removeScriptTypeAttributes: true,
-          //   removeStyleLinkTypeAttributes: true
-          // }
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new cleanPlugin(['dist']),
         new ngAnnotatePlugin({
-            add: true
+          add: true
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
@@ -110,5 +71,6 @@ let config = {
 // https://webpack.github.io/docs/build-performance.html
 // http://cheng.logdown.com/posts/2016/03/25/679045
 // https://www.jonathan-petitcolas.com/2016/01/23/webpack-html-plugin-in-a-nutshell.html
+// https://github.com/kitconcept/webpack-starter-angular
 
 module.exports = config;
