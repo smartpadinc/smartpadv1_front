@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-build": "webpack -d --display-modules --progress --watch-poll",
+    "dev-build": "webpack -d --display-modules --progress",
     "dist-build": "webpack -p --display-modules --progress",
-    "start": "webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll"
+    "start": "webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll --content-base ./"
   },
   "author": "",
   "license": "ISC",
