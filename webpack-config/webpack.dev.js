@@ -6,13 +6,12 @@ const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 
 const basePath = function(dest) {
   return path.resolve(__dirname, '../' + dest);
-}
+};
+
 // define Webpack configuration object to be exported
 let config = {
     cache: true,
     devtool: "eval",
-    context: basePath('app'),
-    //entry: './app.module.js',
     entry: {
       app: [
         'webpack/hot/dev-server',
