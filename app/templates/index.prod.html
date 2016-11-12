@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- <title>(<%- htmlWebpackPlugin.options.environment %>) SmartPad</title> -->
+    <title>SmartPad</title>
+    <style>
+      [data-ng-cloak] {
+        display: none !important;
+      }
+    </style>
+    <link rel="stylesheet" href="http://192.168.1.100:8095/static/app.css">
+  </head>
+  <body data-ng-app="app">
+    <div ui-view="main"></div>
+  </body>
+</html>
