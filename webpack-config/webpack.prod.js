@@ -1,8 +1,11 @@
 "use strict";
+
 const path              = require('path');
 const webpack           = require('webpack');
 const cleanPlugin       = require('clean-webpack-plugin');
 const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash    = require('webpack-md5-hash');
 
 const basePath = function(dest) {
   return path.resolve(__dirname, '../' + dest);
@@ -20,8 +23,8 @@ let config = {
     },
     output: {
         path: basePath('dist'),
-        publicPath: '/dist/',
-        filename: 'bundle.js'
+        filename: '[name].[chunkhash].bundle.js',
+        sourceMapFilename: '[name].[chunkhash].bundle.map'
     },
     resolve: {
         alias: {
@@ -68,6 +71,19 @@ let config = {
               warnings: false
             }
         }),
+        new HtmlWebpackPlugin({
+          filename: basePath('index.html'),
+          template: basePath('app/templates/index.prod.html'),
+          environment: "Development",
+          minify: {
+            collapseWhitespace: true,
+            removeComments: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true
+          }
+        }),
+        new WebpackMd5Hash(),
     ]
 };
 

@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-build": "webpack -d --display-modules --progress",
-    "dist-build": "webpack -p --display-modules --progress",
-    "start": "webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll --content-base ./"
+    "dist-build": "webpack -p --display-modules --progress --display-modules",
+    "build:production": "webpack -p --display-modules --progress --display-modules",
+    "start": "webpack && webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll --content-base ./"
   },
   "author": "",
   "license": "ISC",
@@ -52,7 +53,8 @@
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "pug-html-loader": "^1.0.9",
-    "ui-router": "^1.0.0-alpha.3"
+    "ui-router": "^1.0.0-alpha.3",
+    "webpack-md5-hash": "0.0.5"
   },
   "tmp": {
     "start": "concurrently \"webpack-dev-server --display-modules --progress --host 0.0.0.0 --port 8096 --hot --inline --compress --watch-poll\" \"gulp sass:watch-dev\"  "

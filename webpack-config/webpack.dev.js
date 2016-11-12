@@ -3,6 +3,7 @@ const path              = require('path');
 const webpack           = require('webpack');
 const cleanPlugin       = require('clean-webpack-plugin');
 const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const basePath = function(dest) {
   return path.resolve(__dirname, '../' + dest);
@@ -57,6 +58,10 @@ let config = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+          filename: basePath('index.html'),
+          template: basePath('app/templates/index.dev.html'),
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new cleanPlugin(['dist'], {
           root: basePath(''),
