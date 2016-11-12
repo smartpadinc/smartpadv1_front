@@ -11,6 +11,8 @@ const basePath = function(dest) {
   return path.resolve(__dirname, '../' + dest);
 };
 
+const cssBuildInfo = require(basePath('build/build-manifest.json'));
+
 // define Webpack configuration object to be exported
 let config = {
     cache: true,
@@ -38,7 +40,6 @@ let config = {
     },
     module: {
         loaders: [
-            /*{ test: /\.scss$/, loaders: ["style", "css", "sass"] }, */
             { include: basePath('config.json'), loader: 'json', },
             { include: /\.pug/, loader: 'pug-html-loader', },
             {
@@ -74,7 +75,7 @@ let config = {
         new HtmlWebpackPlugin({
           filename: basePath('index.html'),
           template: basePath('app/templates/index.prod.html'),
-          environment: "Development",
+          buildManifest: cssBuildInfo,
           minify: {
             collapseWhitespace: true,
             removeComments: true,
