@@ -75,7 +75,7 @@ let config = {
         new HtmlWebpackPlugin({
           filename: basePath('index.html'),
           template: basePath('app/templates/index.prod.html'),
-          buildManifest: cssBuildInfo,
+          //buildManifest: cssBuildInfo,
           minify: {
             collapseWhitespace: true,
             removeComments: true,
