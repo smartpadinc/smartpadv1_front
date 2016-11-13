@@ -115,7 +115,7 @@ gulp.task('sass:compile-fast',['clean:style','sass:concat','sass:build','css:opt
 });
 
 /* rebuild and compile everything from start */
-gulp.task('sass:production',['clean:build','sass:concat','mv:fonts','mv:images','sass:build','css:optimize','sass:cache-bust'], function() {
+gulp.task('sass:production',['clean:build','sass:concat','mv:fonts','mv:images','sass:build','css:optimize'], function() {
   console.log("Assets compiled successfully");
 });
 
@@ -153,10 +153,9 @@ gulp.task('mv:images',['clean:images'], function() {
 /* ongoing function */
 gulp.task('bust', function () {
   console.log("Cache busting assets...");
-  return gulp.src('./build/app.css')
+  return gulp.src('build/app.css')
     .pipe(bust({
-      fileName: 'build-manifest.json',
-      length: 15
+      fileName: 'build-manifest.json'
     }))
     .pipe(gulp.dest('./build'));
 });
