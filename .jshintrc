@@ -6,7 +6,8 @@
     "node": false,
     "__dirname": false,
     "require": false,
-    "module": false
+    "module": false,
+    "process": false
   },
   "strict": "global",
   "esversion": 6

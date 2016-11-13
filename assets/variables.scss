@@ -1,6 +1,6 @@
 //** Load Bootsrap fonts from this directory.
 $bootstrap-sass-asset-helper: false;
-$icon-font-path: "/fonts/";
-$fa-font-path: "/fonts/" !default;
-$template-image-path: '/images/';
-$template-font-path: '/fonts/';
+$icon-font-path: "/build/fonts/";
+$fa-font-path: "/build/fonts/" !default;
+$template-image-path: '/build/images/';
+$template-font-path: '/build/fonts/';

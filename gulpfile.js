@@ -4,13 +4,15 @@ const gulp          = require('gulp');
 const sass          = require('gulp-sass');
 const concat        = require('gulp-concat');
 const clean         = require('gulp-clean');
-const Bust          = require('gulp-bust');
+const bust          = require('gulp-buster');
 const del           = require('del');
 const flatten       = require('gulp-flatten');
 const vinylPaths    = require('vinyl-paths');
 const autoprefixer  = require('gulp-autoprefixer');
 const cssmin        = require('gulp-cssmin');
-const buster        = new Bust({ production: true });
+// const buster        = new Bust({
+//                         production: false,
+//                       });
 
 
 const sassInclude = {
@@ -104,13 +106,19 @@ gulp.task('css:optimize', function () {
 
 /* rebuild and compile everything from start */
 gulp.task('sass:compile',['clean:build','sass:concat','mv:fonts','mv:images','sass:build','css:optimize'], function() {
-  console.log("(Development) Assets compiled successfully");
+  console.log("Assets compiled successfully");
 });
 
 /* Rebuild only the css related stuff */
 gulp.task('sass:compile-fast',['clean:style','sass:concat','sass:build','css:optimize'], function() {
   console.log("Compiling assets quickly...");
 });
+
+/* rebuild and compile everything from start */
+gulp.task('sass:production',['clean:build','sass:concat','mv:fonts','mv:images','sass:build','css:optimize'], function() {
+  console.log("Assets compiled successfully");
+});
+
 
 gulp.task('sass:watch-dev', function () {
   gulp.watch('assets/**/*.scss', ['sass:compile-fast']);
@@ -143,8 +151,11 @@ gulp.task('mv:images',['clean:images'], function() {
 });
 
 /* ongoing function */
-gulp.task('sass:cache-bust', function () {
-  return gulp.src('./build/app.css')
-    .pipe(buster.resources())
-    .pipe(gulp.dest('./build/bust'));
+gulp.task('bust', function () {
+  console.log("Cache busting assets...");
+  return gulp.src('build/app.css')
+    .pipe(bust({
+      fileName: 'build-manifest.json'
+    }))
+    .pipe(gulp.dest('./build'));
 });

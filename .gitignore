@@ -19,5 +19,6 @@ __pycache__
 .babelrc
 smartpadv1_front.conf
 build/
+dist/
 assets/app.scss
 index.html
