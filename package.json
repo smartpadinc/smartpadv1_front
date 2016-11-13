@@ -30,6 +30,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-flatten": "^0.3.1",
+    "gulp-sass": "^2.3.2",
     "html-webpack-plugin": "^2.24.1",
     "jshint": "^2.9.3",
     "jshint-loader": "^0.8.3",
