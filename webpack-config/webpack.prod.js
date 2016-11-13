@@ -11,7 +11,7 @@ const basePath = function(dest) {
   return path.resolve(__dirname, '../' + dest);
 };
 
-const cssBuildInfo = require(basePath('build/build-manifest.json'));
+//const cssBuildInfo = require(basePath('build/build-manifest.json'));
 
 // define Webpack configuration object to be exported
 let config = {
