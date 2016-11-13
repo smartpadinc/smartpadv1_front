@@ -2,11 +2,11 @@
 
 export default class AppConfig {
   /* @ngInject */
-  static initUiRouter($stateProvider, $urlRouterProvider) {
+  static initUiRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise("/home");
      $stateProvider
       .state('/home', {
-       url: "/home",
+       url: "/",
        views: {
          "main": {
            controller: 'LandingController',
@@ -14,6 +14,11 @@ export default class AppConfig {
            template: require('templates/landing/home.pug')
          }
        },
+    });
+
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
     });
   }
 }
