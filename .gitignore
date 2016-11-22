@@ -22,3 +22,4 @@ build/
 dist/
 assets/app.scss
 index.html
+config.json
