@@ -1,6 +1,6 @@
 'use strict';
 
-import globalConfig from 'base/config.json';
+import config from 'base/config.json';
 
 import angular from 'npm/angular';
 import ngAria from 'npm/angular-aria';
@@ -22,6 +22,5 @@ angular
 
     LandingModule.name
   ])
-
-  .config(AppConfig.initUiRouter)
-  .constant('globalConfig', globalConfig);
+  .constant('systemConfig', config)
+  .config(AppConfig.initUiRouter);

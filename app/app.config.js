@@ -2,16 +2,19 @@
 
 export default class AppConfig {
   /* @ngInject */
-  static initUiRouter($stateProvider, $urlRouterProvider, $locationProvider) {
+  static initUiRouter($stateProvider, $urlRouterProvider, $locationProvider, systemConfig) {
+    console.log("new system config", systemConfig);
     $urlRouterProvider.otherwise("/home");
-     $stateProvider
-      .state('/home', {
+
+    $stateProvider
+      .state('/', {
        url: "/",
        views: {
          "main": {
            controller: 'LandingController',
            controllerAs: 'home',
-           template: require('templates/landing/home.pug')
+           //template: require('templates/landing/home.pug')
+           template: require('templates/landing/coming-home.pug')
          }
        },
     });
