@@ -259,16 +259,16 @@ p { margin: 0; }
 	}
 
 /* -- CONTENT: COMING SOON --*/
-	#coming-soon {
+	div.comingsoon {
 		background: rgba(255,255,255,0.85);
 		padding: 28px;
 		position: absolute;
-	    right: 0;
-	    left: 0;
-	    top: 50%;
-	    width: 570px;
-	    height: 474;
-	    margin: -237px auto 0;
+    right: 0;
+    left: 0;
+    top: 50%;
+    width: 570px;
+    height: 474px;
+    margin: 237px auto 0;
 
 		.logo {
 			img {
@@ -330,7 +330,6 @@ p { margin: 0; }
 	}
 
 /* -- CONTENT: HOME PAGE -- */
-
 	/* First Section */
 
 	#first {

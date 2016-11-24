@@ -13,8 +13,8 @@ export default class AppConfig {
          "main": {
            controller: 'LandingController',
            controllerAs: 'home',
-           template: require('templates/landing/home.pug')
-           //template: require('templates/landing/coming-home.pug')
+           //template: require('templates/landing/home.pug')
+           template: require('templates/landing/coming-home.pug')
          }
        },
     });
