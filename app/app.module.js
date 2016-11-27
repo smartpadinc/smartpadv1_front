@@ -15,6 +15,12 @@ import {default as LandingModule} from 'components/landing/landing.module';
 window.$ = $;
 window.jQuery = jQuery;
 
+console.log(config.globals.isMaintenance);
+
+if(config.globals.isMaintenance === true) {
+
+}
+
 angular
   .module('app', [
     ngAria,

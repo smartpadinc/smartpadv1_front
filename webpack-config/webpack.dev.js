@@ -18,18 +18,20 @@ let config = {
         'webpack/hot/dev-server',
         basePath('app/app.module.js'),
       ]
+
     },
     output: {
         path: basePath('dist'),
         publicPath: '/dist/',
-        filename: 'bundle.js'
+        filename: "[name].bundle.js"
     },
     resolve: {
         alias: {
           'base'        : basePath(''),
-          'npm'         : basePath('node_modules'),
+          'libs'        : basePath('libs'),
           'assets'      : basePath('assets'),
           'build'       : basePath('build'),
+          'npm'         : basePath('node_modules'),
           'templates'   : basePath('app/templates'),
           'components'  : basePath('app/components'),
         },
@@ -52,7 +54,10 @@ let config = {
         preLoaders: [
             {
                 test: /\.js?$/,
-                exclude: /node_modules/,
+                exclude: [
+                  /node_modules/,
+                  basePath('libs'),
+                ],
                 loader: 'jshint'
             }
         ]
@@ -69,11 +74,11 @@ let config = {
         new ngAnnotatePlugin({
           add: true
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     }
+        // }),
     ]
 };
 

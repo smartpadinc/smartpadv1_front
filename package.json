@@ -41,6 +41,7 @@
     "pug-html-loader": "^1.0.9",
     "run-sequence": "^1.2.2",
     "sass-loader": "^4.0.2",
+    "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "vinyl-paths": "^2.1.0",

@@ -4,7 +4,7 @@ export default class AppConfig {
   /* @ngInject */
   static initUiRouter($stateProvider, $urlRouterProvider, $locationProvider, systemConfig) {
     console.log("new system config", systemConfig);
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
       .state('/', {
