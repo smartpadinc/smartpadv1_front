@@ -14,6 +14,7 @@ let config = {
     cache: true,
     devtool: "eval",
     entry: {
+      //vendor: ['libs/supersized-shutter'],
       app: [
         'webpack/hot/dev-server',
         basePath('app/app.module.js'),
@@ -23,7 +24,8 @@ let config = {
     output: {
         path: basePath('dist'),
         publicPath: '/dist/',
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        //chunkFilename: "vendor.bundle1.js"
     },
     resolve: {
         alias: {
@@ -74,11 +76,7 @@ let config = {
         new ngAnnotatePlugin({
           add: true
         }),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     }
-        // }),
+        //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity)
     ]
 };
 
@@ -88,5 +86,6 @@ let config = {
 // http://cheng.logdown.com/posts/2016/03/25/679045
 // https://www.jonathan-petitcolas.com/2016/01/23/webpack-html-plugin-in-a-nutshell.html
 // https://github.com/kitconcept/webpack-starter-angular
+// https://webpack.github.io/docs/code-splitting.html
 
 module.exports = config;
