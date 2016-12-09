@@ -10,6 +10,8 @@ const flatten       = require('gulp-flatten');
 const vinylPaths    = require('vinyl-paths');
 const autoprefixer  = require('gulp-autoprefixer');
 const cssmin        = require('gulp-cssmin');
+const plumber       = require('gulp-plumber');
+const runSequence   = require('run-sequence');
 // const buster        = new Bust({
 //                         production: false,
 //                       });
@@ -28,6 +30,7 @@ gulp.task('default', function() {
 gulp.task('clean:build', function () {
   console.log("Cleaning old build folder...");
   return gulp.src('build/*')
+  .pipe(plumber())
   .pipe(vinylPaths(del));
 });
 
@@ -37,6 +40,7 @@ gulp.task('clean:fonts', function() {
   return gulp.src([
     'build/fonts/'
   ])
+  .pipe(plumber())
   .pipe(vinylPaths(del));
 });
 
@@ -46,6 +50,7 @@ gulp.task('clean:images', function() {
   return gulp.src([
     'build/images/'
   ])
+  .pipe(plumber())
   .pipe(vinylPaths(del));
 });
 
@@ -53,12 +58,14 @@ gulp.task('clean:images', function() {
 gulp.task('clean:style', function () {
   console.log("Cleaning generated style...");
   return gulp.src('build/app.css')
+  .pipe(plumber())
   .pipe(vinylPaths(del));
 });
 
 gulp.task('clean:sass-main', function () {
   console.log("Cleaning main sass file...");
   return gulp.src('assets/app.scss')
+  .pipe(plumber())
   .pipe(vinylPaths(del));
 });
 
@@ -70,6 +77,7 @@ gulp.task('sass:concat',['clean:sass-main'], function() {
     'assets/**/*.scss',
     '!assets/variables.scss',
   ])
+    .pipe(plumber())
     .pipe(concat('app.scss'))
     .pipe(gulp.dest('assets'));
 });
@@ -81,6 +89,7 @@ gulp.task('sass:concat',['clean:sass-main'], function() {
 gulp.task('sass:build', function() {
   console.log("(Development) Rebuilding sass files...");
   return gulp.src('assets/app.scss')
+    .pipe(plumber())
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({
       outputStyle: 'compressed',
@@ -96,6 +105,7 @@ gulp.task('sass:build', function() {
 gulp.task('css:optimize', function () {
   console.log("(Development) Optimizing css...");
   return gulp.src('build/app.css')
+    .pipe(plumber())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -110,12 +120,21 @@ gulp.task('sass:compile',['clean:build','sass:concat','mv:fonts','mv:images','sa
 });
 
 /* Rebuild only the css related stuff */
-gulp.task('sass:compile-fast',['clean:style','sass:concat','sass:build','css:optimize'], function() {
+gulp.task('sass:compile-fast', function(cb) {
   console.log("Compiling assets quickly...");
+  runSequence('clean:style','sass:concat','sass:build', cb);
 });
 
 /* rebuild and compile everything from start */
-gulp.task('sass:production',['clean:build','sass:concat','mv:fonts','mv:images','sass:build','css:optimize'], function() {
+gulp.task('sass:production', function(callback) {
+  runSequence('clean:build',
+              'sass:concat',
+              'mv:fonts',
+              'mv:images',
+              'sass:build',
+              'css:optimize',
+              callback
+  );
   console.log("Assets compiled successfully");
 });
 

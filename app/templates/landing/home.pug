@@ -1,27 +1,32 @@
 div.wrapper
   section.image-bg#first
-    div.topbar
-      div.logo-wrapper
-        a#logo(href="#")
-      nav
-        ul
-          li: a.btn(href="#") Lorem Ipsum
-          li: a.btn(href="#") Lorem Ipsum
-          li: a.btn(href="#") Lorem Ipsum
-          li: a.btn(href="#") Lorem Ipsu
-          li: a.btn.btn-orange(href="#") Lorem Ipsum
-          li.login: a.btn(href="#") Lorem Ipsum
+    div.image-opacity
+      div.topbar
+        div.logo-wrapper
+          a#logo(href="#")
+        nav
+          ul
+            li: a.btn(href="#") Home
+            li: a.btn(href="#") About
+            li: a.btn(href="#") Pricing
+            li: a.btn(href="#") Find Roommates
+            li: a.btn.btn-orange(href="#") Sign Up
+            li.login: a.btn(href="#") Login
 
-    div.inner-wrapper.onepcssgrid-1200
-      div.onerow
-        h1 WHERE DO YOU WANT TO RENT
-        ul.locations
-          li.col4: a.btn.btn-green(href="#", ng-click="home.helloWord()") Alabang
-          li.col4: a.btn.btn-green(href="#") Makati
-          li.col4.last: a.btn.btn-green(href="#") Ortigas
-          li.col4: a.btn.btn-green(href="#") Pasay
-          li.col4: a.btn.btn-green(href="#") Quezon City
-          li.col4.last: a.btn.btn-green(href="#") Taguig
+      div.inner-wrapper.onepcssgrid-1200
+        div.onerow
+          h1 WHERE DO YOU WANT TO RENT
+          ul.locations
+            li.col4: a.btn.btn-green(href="#", ng-click="home.helloWord()") Alabang
+            li.col4: a.btn.btn-green(href="#") Makati
+            li.col4.last: a.btn.btn-green(href="#") Ortigas
+            li.col4: a.btn.btn-green(href="#") Pasay
+            li.col4: a.btn.btn-green(href="#") Quezon City
+            li.col4.last: a.btn.btn-green(href="#") Taguig
+          h3 Are you looking for a specific place? Type it in below!
+          div.search-input
+            input(placeholder="Enter your search keyword here")
+            a.btn.btn-orange.btn-search Search
 
   section#second
     div.inner-wrapper.onepcssgrid-1200
@@ -93,19 +98,19 @@ div.wrapper
               input.col12.last.form-field(type="text", placeholder="Your Email")
               button.btn.btn-submit Submit
 
-  section#fourth
-    footer.onepcssgrid-1200
-      div.onerow
-        div.col6
-          ul
-            li: a(href="#") SITEMAP
-            li: a(href="#") BLOGS
-            li: a(href="#") WE'RE HIRING #[span soon]
-          p.copyright.
-            Copyright &copy; SmartPad, Inc. All rights reserved.
-        div.col6.last
-          div.social-media
-            a.icon#facebook(href="#")
-            a.icon#twitter(href="#")
-          p.email.
-            hello@smartpad.ph
+footer
+  div.onepcssgrid-1200.footer-wrapper
+    div.onerow
+      div.col6
+        ul
+          li: a(href="#") SITEMAP
+          li: a(href="#") BLOGS
+          li: a(href="#") WE'RE HIRING #[span soon]
+        p.copyright.
+          Copyright &copy; SmartPad, Inc. All rights reserved.
+      div.col6.last
+        div.social-media
+          a.icon#facebook(href="#")
+          a.icon#twitter(href="#")
+        p.email.
+          hello@smartpad.ph

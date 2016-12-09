@@ -1,6 +1,6 @@
 'use strict';
 
-import globalConfig from 'base/config.json';
+import config from 'base/config.json';
 
 import angular from 'npm/angular';
 import ngAria from 'npm/angular-aria';
@@ -15,6 +15,12 @@ import {default as LandingModule} from 'components/landing/landing.module';
 window.$ = $;
 window.jQuery = jQuery;
 
+console.log(config.globals.isMaintenance);
+
+if(config.globals.isMaintenance === true) {
+
+}
+
 angular
   .module('app', [
     ngAria,
@@ -22,6 +28,5 @@ angular
 
     LandingModule.name
   ])
-
-  .config(AppConfig.initUiRouter)
-  .constant('globalConfig', globalConfig);
+  .constant('systemConfig', config)
+  .config(AppConfig.initUiRouter);
