@@ -23,4 +23,9 @@ export default class AppConfig {
       requireBase: false
     });
   }
+
+  static initLocalStorageConfig(localStorageServiceProvider) {
+    console.log("Setting default prefix for localStorageServiceProvider");
+    localStorageServiceProvider.setPrefix('smrtpd');
+  }
 }

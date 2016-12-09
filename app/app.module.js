@@ -5,6 +5,7 @@ import config from 'base/config.json';
 import angular from 'npm/angular';
 import ngAria from 'npm/angular-aria';
 import uiRouter from 'npm/angular-ui-router';
+import LocalStorageModule from 'npm/angular-local-storage';
 
 import $ from 'npm/jquery';
 import jQuery from 'npm/jquery';
@@ -25,8 +26,9 @@ angular
   .module('app', [
     ngAria,
     uiRouter,
-
+    LocalStorageModule,
     LandingModule.name
   ])
   .constant('systemConfig', config)
-  .config(AppConfig.initUiRouter);
+  .config(AppConfig.initUiRouter)
+  .config(AppConfig.initLocalStorageConfig);
