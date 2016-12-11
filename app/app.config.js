@@ -4,6 +4,8 @@ export default class AppConfig {
   /* @ngInject */
   static initUiRouter($stateProvider, $urlRouterProvider, $locationProvider, systemConfig) {
     console.log("new system config", systemConfig);
+    console.log("Setting up ui router");
+
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -27,5 +29,9 @@ export default class AppConfig {
   static initLocalStorageConfig(localStorageServiceProvider) {
     console.log("Setting default prefix for localStorageServiceProvider");
     localStorageServiceProvider.setPrefix('smrtpd');
+  }
+
+  static initAuthRequestInterceptor($httpProvider) {
+    console.log('$log is here tos how you logs', $httpProvider.interceptors);
   }
 }

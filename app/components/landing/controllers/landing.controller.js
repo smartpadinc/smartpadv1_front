@@ -2,7 +2,7 @@
 
 export default class LandingController {
 	/* @ngInject */
-	constructor($scope, $timeout, systemConfig, localStorageService){
+	constructor($scope, $timeout, systemConfig, localStorageService, AuthService) {
     this.thisObj = {
       value: "Using this"
     };
@@ -13,10 +13,17 @@ export default class LandingController {
 			$('#third.image-bg').height(vph); // 205 is footer's height
 		},10);
 
+		AuthService.getGithubProfile().then((value) => {
+			console.log("TEST",value);
+		}, (error) => {
+			console.log("ERROR", error);
+		});
+
 		if(localStorageService.isSupported) {
 	    //...
 			//alert("supported");
 	  }
+
 	}
 
 }
