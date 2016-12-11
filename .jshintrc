@@ -1,6 +1,7 @@
 {
   "browser": true,
   "globals": {
+    "alert": false,
     "console":false,
     "$": false,
     "node": false,
