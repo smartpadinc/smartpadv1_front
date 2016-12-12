@@ -15,12 +15,10 @@ export default class RequestInterceptor {
 	}
 
 	request(config) {
-		// config.headers = {
-		// 	'Accept': "application/json, text/plain, */*",
-		// 	'Authorization': 'Bearer DCRrCx0OhJHrPvFmUF6d85wFRh20cr'
-		// };
-		config.headers['authorization'] = 'Bearer DCRrCx0OhJHrPvFmUF6d85wFRh20cr';
-		console.log("HEADER CONFIG", config);
+		config.headers = {
+			'Accept': 				'application/json',
+			'authorization' : 'Bearer fj40GT1fNwe32CoiCydNOgTovLQi8F'
+		};
 		return config;
 	}
 
