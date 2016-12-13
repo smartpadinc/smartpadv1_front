@@ -94,9 +94,9 @@ div.wrapper
           div.col6.last
             h3 Subscribe and hear from us
             form.ro-form
-              input.col12.last.form-field(type="text", placeholder="Your Name")
-              input.col12.last.form-field(type="text", placeholder="Your Email")
-              button.btn.btn-submit Submit
+              input.col12.last.form-field#testid(type="text", placeholder="Your Name", ng-model="input.email")
+              input.col12.last.form-field(type="text", placeholder="Your Email", ng-model="input.password")
+              button.btn.btn-submit(ng-click="home.login()") Submit
 
 footer
   div.onepcssgrid-1200.footer-wrapper

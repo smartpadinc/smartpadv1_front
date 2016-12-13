@@ -15,10 +15,21 @@ export default class RequestInterceptor {
 	}
 
 	request(config) {
-		config.headers = {
-			'Accept': 				'application/json',
-			'authorization' : 'Bearer fj40GT1fNwe32CoiCydNOgTovLQi8F'
-		};
+		console.log("intereptor config",config);
+
+		if(config.method === "GET") {
+			config.headers = {
+				'Accept': 				'application/json ',
+				'authorization' : 'Bearer fj40GT1fNwe32CoiCydNOgTovLQi8F'
+			};
+
+		} else if(config.method === "POST") {
+			config.headers = {
+				'Content-Type'	: 'application/x-www-form-urlencoded',
+			};
+		}
+
+		console.log("interceptor config", config);
 		return config;
 	}
 
