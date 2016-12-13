@@ -4,6 +4,7 @@
     "alert": false,
     "console":false,
     "$": false,
+    "jQuery": false,
     "node": false,
     "__dirname": false,
     "require": false,
