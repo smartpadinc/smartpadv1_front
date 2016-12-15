@@ -5,15 +5,16 @@ import config from 'base/config.json';
 import angular from 'npm/angular';
 import ngAria from 'npm/angular-aria';
 import uiRouter from 'npm/angular-ui-router';
+import uiBootstrap from 'npm/angular-ui-bootstrap';
 import ngResource from 'npm/angular-resource';
 import LocalStorageModule from 'npm/angular-local-storage';
 
 import $ from 'npm/jquery';
 import jQuery from 'npm/jquery';
 
-import {default as AppConfig} from './app.config';
-import {default as CommonModule} from 'components/common/common.module';
-import {default as LandingModule} from 'components/landing/landing.module';
+import AppConfig from './app.config';
+import CommonModule from 'components/common/common.module';
+import LandingModule from 'components/landing/landing.module';
 
 window.$ = $;
 window.jQuery = jQuery;
@@ -29,6 +30,7 @@ angular
     ngAria,
     ngResource,
     uiRouter,
+    uiBootstrap,
     LocalStorageModule,
     CommonModule.name,
     LandingModule.name

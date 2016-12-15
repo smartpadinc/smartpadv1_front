@@ -5,7 +5,7 @@ const AUTH = new WeakMap();
 export default class LandingController {
 	/* @ngInject */
 	constructor($scope, $timeout, systemConfig, localStorageService, AuthService) {
-		this.$scope = $scope;
+		this.$scope 			= $scope;
 		this.$scope.input = {};
 
 		AUTH.set(this, AuthService);
@@ -37,6 +37,10 @@ export default class LandingController {
 		AUTH.get(this).authenticateUser(credentials.email, credentials.password).then(() => {
 
 		});
+	}
+
+	showLoginModal() {
+
 	}
 
 }
