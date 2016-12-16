@@ -11,11 +11,10 @@ div.wrapper
             li: a.btn(href="#") Pricing
             li: a.btn(href="#") Find Roommates
             li: a.btn.btn-orange(href="#") Sign Up
-            li.login: a.btn(href="#") Login
+            li.login: a.btn(ng-click='login.showModal()', ui-login) Login
 
       div.inner-wrapper.onepcssgrid-1200
         div.onerow
-          ui-login
           h1 WHERE DO YOU WANT TO RENT
           ul.locations
             li.col4: a.btn.btn-green(href="#", ng-click="home.helloWord()") Alabang
@@ -115,3 +114,5 @@ footer
           a.icon#twitter(href="#")
         p.email.
           hello@smartpad.ph
+
+//- div(uib-timepicker ng-model="mytime" hour-step="15" minute-step="1" show-meridian="true")

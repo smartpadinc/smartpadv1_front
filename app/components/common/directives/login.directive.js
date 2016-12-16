@@ -1,13 +1,13 @@
 'use strict';
 
 class LoginDirective {
-  constructor() {
-    this.template = require('templates/common/test.pug');
-    this.restrict = 'E';
+  constructor($uibModal) {
+    this.$uibModal  = $uibModal;
+    //this.template   = require('templates/common/test.pug');
+    this.restrict   = 'A';
 
     this.controller = LoginDirectiveController;
     this.controllerAs = 'login';
-    //this.bindToController = true;
   }
 
   link(scope, element, attrs, ctr) {
@@ -21,13 +21,21 @@ class LoginDirective {
 }
 
 class LoginDirectiveController {
-  constructor() {
-
+  constructor($uibModal) {
+    this.$uibModal = $uibModal;
   }
 
-  sampleFunction() {
-    alert(1);
-  }
+  showModal() {
+		var modalInstance = this.$uibModal.open({
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      template: require('templates/common/login/login.modal.pug'),
+      size: 'md',
+    });
+
+	}
 }
+
+LoginDirectiveController.$inject = ['$uibModal'];
 
 export default LoginDirective.directiveFactory;
