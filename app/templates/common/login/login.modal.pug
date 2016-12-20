@@ -1,7 +1,16 @@
 div.modal-dialog#myModalContent
-  small modal Content
+  .modal-body
+    div.row
+      .col-md-12
+        .form-group
+          label(for="email_address") Email Address
+          input.form-control#email_address(type="email", ng-model="input.email", placeholder="Email Address")
+        .form-group
+          label(for="password") Password
+          input.form-control#password(type="password",ng-model="input.password", ng-change="")
+        a.btn.btn-success(ng-click="loginA()") Login
 
-  //- .modal-header
+  //- .modal-headertk
   //-   h3.modal-title#modal-title I'm a modal
   //- .modal-body#modal-body: h3 Content of Modal
   //- .modal-footer

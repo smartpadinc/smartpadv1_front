@@ -11,7 +11,6 @@ class LoginDirective {
   }
 
   link(scope, element, attrs, ctr) {
-
   }
 
   static directiveFactory() {
@@ -26,15 +25,23 @@ class LoginDirectiveController {
   }
 
   showModal() {
-		var modalInstance = this.$uibModal.open({
+		this.$uibModal.open({
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
       template: require('templates/common/login/login.modal.pug'),
       size: 'md',
-    });
+      controller: ($scope) => {
 
+        $scope.loginA = function() {
+          alert(1);
+        };
+        console.log("loveBug",$scope);
+      }
+    });
 	}
+
 }
+
 
 LoginDirectiveController.$inject = ['$uibModal'];
 
