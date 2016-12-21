@@ -2,13 +2,14 @@ div.modal-dialog#myModalContent
   .modal-body
     div.row
       .col-md-12
+        .alert.alert-danger(role="alert", ng-if="error.invalidUserPassword") Invalid username or password
         .form-group
           label(for="email_address") Email Address
-          input.form-control#email_address(type="email", ng-model="input.email", placeholder="Email Address")
+          input.form-control#email_address(type="text", ng-model="input.email", placeholder="Email Address")
         .form-group
           label(for="password") Password
           input.form-control#password(type="password",ng-model="input.password", ng-change="")
-        a.btn.btn-success(ng-click="loginA()") Login
+        a.btn.btn-success(ng-click="clientAuthenticate()") Login
 
   //- .modal-headertk
   //-   h3.modal-title#modal-title I'm a modal

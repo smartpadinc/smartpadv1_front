@@ -18,13 +18,10 @@ import LandingModule from 'components/landing/landing.module';
 import uiBootstrap from 'npm/angular-ui-bootstrap';
 //import timepicker from 'npm/angular-ui-bootstrap/src/timepicker/index-nocss';
 
-window.$ = $;
-window.jQuery = jQuery;
 
-console.log(config.globals.isMaintenance);
 
 if(config.globals.isMaintenance === true) {
-
+  console.log(config.globals.isMaintenance);
 }
 
 angular

@@ -30,12 +30,25 @@ class LoginDirectiveController {
       ariaDescribedBy: 'modal-body',
       template: require('templates/common/login/login.modal.pug'),
       size: 'md',
-      controller: ($scope) => {
+      controller: ($scope, AuthService, localStorageService) => {
+        $scope.error = {};
 
-        $scope.loginA = function() {
-          alert(1);
+        $scope.clientAuthenticate = function() {
+          let input = $scope.input;
+
+          $scope.error.invalidUserPassword = false;
+
+          if(!_.isEmpty(input.email) || !_.isEmpty(input.password)) {
+            AuthService.authenticateUser(input.email, input.password).then((success) => {
+              console.log("TEST SUCCESS!", success);
+        		}, (error) => {
+              $scope.error.invalidUserPassword = true;
+            });
+          } else {
+            console.log("Invalid Email or Password");
+          }
         };
-        console.log("loveBug",$scope);
+
       }
     });
 	}
@@ -43,6 +56,6 @@ class LoginDirectiveController {
 }
 
 
-LoginDirectiveController.$inject = ['$uibModal'];
+LoginDirectiveController.$inject = ['$uibModal','AuthService','localStorageService'];
 
 export default LoginDirective.directiveFactory;

@@ -30,16 +30,12 @@ export default class LandingController {
 	  }
 
 	}
-	
+
 	login() {
 		let credentials = this.$scope.input;
 		AUTH.get(this).authenticateUser(credentials.email, credentials.password).then(() => {
 
 		});
-	}
-
-	showLoginModal() {
-
 	}
 
 }

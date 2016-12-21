@@ -20,7 +20,7 @@ export default class AuthService {
 			client_secret : this.sysConfig.client_secret,
 		};
 
-		let post = this.jQuery.param(params);
+		let post = $.param(params);
 
 		return HTTP.get(this).post(this.apiServer + 'o/token/', post).then(result =>  result.data );
 	}
@@ -30,5 +30,9 @@ export default class AuthService {
 		//return HTTP.get(this).get('https://api.github.com/users/naorye/repos').then(result =>  result.data );
 
 		return HTTP.get(this).get(this.apiServer + 'api/user/profile/').then(result =>  result.data );
+	}
+
+	verifyService() {
+		return "Instantiated!";
 	}
 }
