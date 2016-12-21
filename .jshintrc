@@ -9,7 +9,9 @@
     "__dirname": false,
     "require": false,
     "module": false,
-    "process": false
+    "process": false,
+    "_":false,
+    "moment": false
   },
   "strict": "global",
   "esversion": 6
