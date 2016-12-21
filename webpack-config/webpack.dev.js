@@ -48,7 +48,7 @@ let config = {
                 include: basePath('app'),
                 loader: 'babel',
                 query: {
-                    cacheDirectory: true, //important for performance
+                    cacheDirectory: true, //important for performance,
                     presets: ["es2015"]
                 }
             }
@@ -65,6 +65,13 @@ let config = {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery",
+          "window.jQuery": "jquery",
+          _: "lodash",
+          "moment": "moment"
+        }),
         new HtmlWebpackPlugin({
           filename: basePath('index.html'),
           template: basePath('app/templates/index.dev.html'),

@@ -68,6 +68,13 @@ let config = {
         new ngAnnotatePlugin({
           add: true
         }),
+        new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery",
+          "window.jQuery": "jquery",
+          _: "lodash",
+          "moment": "moment"
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
               warnings: false
