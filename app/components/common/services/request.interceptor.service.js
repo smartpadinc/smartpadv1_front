@@ -1,10 +1,20 @@
 'use strict';
 
-export default class RequestInterceptor {
+class RequestInterceptor {
 	/* @ngInject */
-	constructor($q, $injector) {
+	constructor($q, $injector, localStorageService) {
 		this.$q = $q;
   	this.$injector = $injector;
+
+		this.authorization = {};
+
+		// Get access token
+		let access_token = localStorageService.cookie.get('smrtpd_access_token');
+		if(!_.isEmpty(access_token)) {
+			this.authorization = {
+				'Authorization': 'Bearer ' + access_token
+			};
+		}
 
 		return {
 			request: this.request.bind(this),
@@ -15,21 +25,14 @@ export default class RequestInterceptor {
 	}
 
 	request(config) {
-		console.log("intereptor config",config);
-
+		let headers = {};
 		if(config.method === "GET") {
-			config.headers = {
-				'Accept': 				'application/json ',
-				'authorization' : 'Bearer fj40GT1fNwe32CoiCydNOgTovLQi8F'
-			};
-
+			headers = {'Accept':'application/json'};
 		} else if(config.method === "POST") {
-			config.headers = {
-				'Content-Type'	: 'application/x-www-form-urlencoded',
-			};
+			headers = {'Content-Type'	: 'application/x-www-form-urlencoded'};
 		}
 
-		console.log("interceptor config", config);
+		config.headers = _.merge({}, headers, this.authorization);
 		return config;
 	}
 
@@ -45,3 +48,7 @@ export default class RequestInterceptor {
 		return this.$q.reject(err);
 	}
 }
+
+RequestInterceptor.$inject = ['$q','$injector','localStorageService'];
+
+export default RequestInterceptor;

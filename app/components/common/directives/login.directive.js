@@ -39,8 +39,10 @@ class LoginDirectiveController {
           $scope.error.invalidUserPassword = false;
 
           if(!_.isEmpty(input.email) || !_.isEmpty(input.password)) {
-            AuthService.authenticateUser(input.email, input.password).then((success) => {
-              console.log("TEST SUCCESS!", success);
+            AuthService.authenticateUser(input.email, input.password).then((data) => {
+              console.log("TEST SUCCESS!", data);
+              localStorageService.cookie.set('smrtpd_access_token', data.access_token);
+
         		}, (error) => {
               $scope.error.invalidUserPassword = true;
             });
@@ -49,6 +51,12 @@ class LoginDirectiveController {
           }
         };
 
+        $scope.getGithubProfile = function() {
+          alert("Get Github Profile");
+          AuthService.getGithubProfile().then((result) =>  {
+            console.log(result);
+          });
+        };
       }
     });
 	}
