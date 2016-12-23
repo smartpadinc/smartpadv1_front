@@ -2,7 +2,7 @@
 
 export default class AppConfig {
   /* @ngInject */
-  static initUiRouter($stateProvider, $urlRouterProvider, $locationProvider, systemConfig) {
+  static initUiRouter($stateProvider, $urlRouterProvider,$qProvider, $locationProvider, systemConfig) {
     console.log("new system config", systemConfig);
     console.log("Setting up ui router");
 
@@ -24,11 +24,17 @@ export default class AppConfig {
       enabled: true,
       requireBase: false
     });
+
+    $qProvider.errorOnUnhandledRejections(false);
   }
 
   static initLocalStorageConfig(localStorageServiceProvider) {
     console.log("Setting default prefix for localStorageServiceProvider");
-    localStorageServiceProvider.setPrefix('smrtpd');
+    localStorageServiceProvider
+      .setPrefix('smrtpd')
+      .setStorageType('localStorage')
+      .setDefaultToCookie(false)
+      .setStorageCookie(1,'/', true);
   }
 
   static initAuthRequestInterceptor($httpProvider) {
