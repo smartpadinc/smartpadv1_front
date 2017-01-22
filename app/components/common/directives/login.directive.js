@@ -1,22 +1,17 @@
 'use strict';
 
 class LoginDirective {
-  constructor($uibModal) {
-    this.$uibModal  = $uibModal;
-    //this.template   = require('templates/common/test.pug');
+  constructor() {
     this.restrict   = 'A';
-
     this.controller = LoginDirectiveController;
     this.controllerAs = 'login';
   }
 
-  link(scope, element, attrs, ctr) {
-  }
+  link(scope, element, attrs, ctr) {}
 
   static directiveFactory() {
     return new LoginDirective();
   }
-
 }
 
 class LoginDirectiveController {
@@ -61,7 +56,6 @@ class LoginDirectiveController {
 	}
 
 }
-
 
 LoginDirectiveController.$inject = ['$uibModal','AuthService','localStorageService'];
 
