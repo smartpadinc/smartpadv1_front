@@ -41,9 +41,18 @@ export default class AppConfig {
     console.log('[Debug] $log is here tos how you logs', $httpProvider.interceptors);
   }
 
-  static initGlobalScope($rootScope, systemConfig) {
+  static initGlobalScope($rootScope, systemConfig, $http) {
+
     $rootScope.globals = {
       systemConfig: systemConfig
     };
+
+    $http.get(systemConfig.apiServer + 'api/user/account//').then(result => {
+      $rootScope.globals.user = result;
+    });
+
+
+
+
   }
 }
