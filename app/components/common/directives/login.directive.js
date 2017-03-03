@@ -19,10 +19,6 @@ class LoginDirectiveController {
     this.$uibModal = $uibModal;
   }
 
-  test() {
-    alert(1);
-  }
-
   showModal() {
 		var modalInstance = this.$uibModal.open({
       animation: false,

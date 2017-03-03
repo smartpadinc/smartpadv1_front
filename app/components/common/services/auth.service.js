@@ -24,7 +24,4 @@ export default class AuthService {
 		return HTTP.get(this).post(this.apiServer + 'o/token/', post).then(result =>  result.data );
 	}
 
-	verifyService() {
-		return "Instantiated!";
-	}
 }
