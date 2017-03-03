@@ -21,15 +21,7 @@ export default class AuthService {
 		};
 
 		let post = $.param(params);
-
 		return HTTP.get(this).post(this.apiServer + 'o/token/', post).then(result =>  result.data );
-	}
-
-	getGithubProfile() {
-		console.log("system config inside auth", this.apiServer, this.apiServer + 'api/user/profile/');
-		//return HTTP.get(this).get('https://api.github.com/users/naorye/repos').then(result =>  result.data );
-
-		return HTTP.get(this).get(this.apiServer + 'api/user/profile/').then(result =>  result.data );
 	}
 
 	verifyService() {

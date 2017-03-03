@@ -19,38 +19,39 @@ class LoginDirectiveController {
     this.$uibModal = $uibModal;
   }
 
+  test() {
+    alert(1);
+  }
+
   showModal() {
-		this.$uibModal.open({
+		var modalInstance = this.$uibModal.open({
+      animation: false,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
       template: require('templates/common/login/login.modal.pug'),
       size: 'md',
       controller: ($scope, AuthService, localStorageService) => {
         $scope.error = {};
-
         $scope.clientAuthenticate = function() {
           let input = $scope.input;
 
           $scope.error.invalidUserPassword = false;
 
-          if(!_.isEmpty(input.email) || !_.isEmpty(input.password)) {
+          if( !_.isUndefined(input) && (!_.isEmpty(input.email) || !_.isEmpty(input.password)) ) {
             AuthService.authenticateUser(input.email, input.password).then((data) => {
-              console.log("TEST SUCCESS!", data);
               localStorageService.set('smrtpd_access_token', data.access_token);
+              modalInstance.dismiss('cancel');
 
         		}, (error) => {
-              $scope.error.invalidUserPassword = true;
+              $scope.error = {
+                'invalidUserPassword' : true,
+                'message': 'Invalid username or password'
+              };
+
             });
-          } else {
-            console.log("Invalid Email or Password");
-          }
+          } else { console.log("[Debug] Empty fields"); }
         };
 
-        $scope.getGithubProfile = function() {
-          AuthService.getGithubProfile().then((result) =>  {
-            console.log(result);
-          });
-        };
       }
     });
 	}

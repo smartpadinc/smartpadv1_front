@@ -1,7 +1,7 @@
 'use strict';
 
 class RequestInterceptor {
-	
+
 	constructor($q, $injector, localStorageService) {
 		this.$q = $q;
   	this.$injector = $injector;

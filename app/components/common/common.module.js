@@ -7,7 +7,6 @@ import RequestInterceptor from './services/request.interceptor.service';
 /*
 AuthService.$inject  = ['$http'];
 */
-
 export default angular
 	.module('app.common', [])
 	.service('AuthService', AuthService)
@@ -15,5 +14,5 @@ export default angular
 	.directive('uiLogin', LoginDirective)
 	.config(function($httpProvider) {
 		$httpProvider.interceptors.push('RequestInterceptor');
-		console.log('adding interceptors', $httpProvider.interceptors);
+		console.log('[Debug] adding interceptors', $httpProvider.interceptors);
 	});
