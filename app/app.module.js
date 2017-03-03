@@ -16,6 +16,7 @@ import uiBootstrap from 'npm/angular-ui-bootstrap';
 //import timepicker from 'npm/angular-ui-bootstrap/src/timepicker/index-nocss';
 
 
+//- Turn off debugging
 if(!config.debug) {
   console.log = function() {};
 }
@@ -33,4 +34,3 @@ angular
   .constant('systemConfig', config)
   .config(AppConfig.initUiRouter)
   .config(AppConfig.initLocalStorageConfig);
-  //.config(AppConfig.initAuthRequestInterceptor);
