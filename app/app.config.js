@@ -41,7 +41,9 @@ export default class AppConfig {
     console.log('[Debug] $log is here tos how you logs', $httpProvider.interceptors);
   }
 
-  static TestCall(localStorageService) {
-
+  static initGlobalScope($rootScope, systemConfig) {
+    $rootScope.globals = {
+      systemConfig: systemConfig
+    };
   }
 }

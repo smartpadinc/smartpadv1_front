@@ -4,10 +4,9 @@ const HTTP = new WeakMap();
 
 export default class AuthService {
 	/* @ngInject */
-	constructor($http, systemConfig) {
-		this.jQuery = window.$;
-		this.sysConfig = systemConfig;
-		this.apiServer = systemConfig.apiServer;
+	constructor($http, $rootScope) {
+		this.jQuery 		= window.$;
+		this.sysConfig 	= $rootScope.globals.systemConfig;
 		HTTP.set(this, $http);
 	}
 
@@ -21,7 +20,7 @@ export default class AuthService {
 		};
 
 		let post = $.param(params);
-		return HTTP.get(this).post(this.apiServer + 'o/token/', post).then(result =>  result.data );
+		return HTTP.get(this).post(this.sysConfig.apiServer + 'o/token/', post).then(result =>  result.data );
 	}
 
 }

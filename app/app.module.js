@@ -34,4 +34,4 @@ angular
   .constant('systemConfig', config)
   .config(AppConfig.initUiRouter)
   .config(AppConfig.initLocalStorageConfig)
-  .run(AppConfig.TestCall);
+  .run(AppConfig.initGlobalScope);
