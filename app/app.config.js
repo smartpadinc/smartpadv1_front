@@ -3,8 +3,8 @@
 export default class AppConfig {
   /* @ngInject */
   static initUiRouter($stateProvider, $urlRouterProvider,$qProvider, $locationProvider, systemConfig) {
-    console.log("new system config", systemConfig);
-    console.log("Setting up ui router");
+    console.log("[Debug] new system config", systemConfig);
+    console.log("[Debug] Setting up ui router");
 
     $urlRouterProvider.otherwise("/");
 
@@ -29,7 +29,7 @@ export default class AppConfig {
   }
 
   static initLocalStorageConfig(localStorageServiceProvider) {
-    console.log("Setting default prefix for localStorageServiceProvider");
+    console.log("[Debug] Setting default prefix for localStorageServiceProvider");
     localStorageServiceProvider
       .setPrefix('smrtpd')
       .setStorageType('localStorage')
@@ -38,6 +38,6 @@ export default class AppConfig {
   }
 
   static initAuthRequestInterceptor($httpProvider) {
-    console.log('$log is here tos how you logs', $httpProvider.interceptors);
+    console.log('[Debug] $log is here tos how you logs', $httpProvider.interceptors);
   }
 }
