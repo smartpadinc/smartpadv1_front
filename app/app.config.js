@@ -40,4 +40,8 @@ export default class AppConfig {
   static initAuthRequestInterceptor($httpProvider) {
     console.log('[Debug] $log is here tos how you logs', $httpProvider.interceptors);
   }
+
+  static TestCall(localStorageService) {
+
+  }
 }
