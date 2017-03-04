@@ -47,7 +47,7 @@ export default class AppConfig {
       systemConfig: systemConfig
     };
 
-    $http.get(systemConfig.apiServer + 'api/user/account//').then(result => {
+    $http.get(systemConfig.apiServer + 'api/user/account/').then(result => {
       $rootScope.globals.user = result;
     });
 
