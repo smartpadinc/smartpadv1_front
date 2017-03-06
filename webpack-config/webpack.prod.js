@@ -29,9 +29,6 @@ let config = {
         sourceMapFilename: '[name].[chunkhash].bundle.map'
     },
     resolve: {
-        root: [
-          path.resolve('./')
-        ],
         alias: {
           'base'        : basePath(''),
           'libs'        : basePath('libs'),
