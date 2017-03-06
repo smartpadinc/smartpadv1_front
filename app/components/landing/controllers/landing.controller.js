@@ -4,9 +4,12 @@ const AUTH = new WeakMap();
 
 export default class LandingController {
 
-	constructor($scope, $timeout, systemConfig, localStorageService, AuthService) {
+	constructor($scope, $rootScope, $timeout, systemConfig, localStorageService, AuthService) {
+		this.$rootScope   = $rootScope;
 		this.$scope 			= $scope;
 		this.$scope.input = {};
+
+		this.localStorageService = localStorageService;
 
 		AUTH.set(this, AuthService);
 
@@ -23,7 +26,15 @@ export default class LandingController {
 	}
 
 	logout() {
-		alert(1);
+		this.$rootScope.globals.user = null;
+
+		AUTH.get(this).revokeSession().then(data => {
+			console.log("[Debug] Logout returned data", data);
+
+			// Clear session
+			this.localStorageService.remove('smrtpd_access_token');
+
+		});
 	}
 
 }

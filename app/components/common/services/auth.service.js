@@ -4,23 +4,26 @@ const HTTP = new WeakMap();
 
 export default class AuthService {
 	/* @ngInject */
-	constructor($http, $rootScope) {
+	constructor($http, $rootScope, localStorageService) {
 		this.jQuery 		= window.$;
 		this.sysConfig 	= $rootScope.globals.systemConfig;
+		this.store 			= localStorageService;
 		HTTP.set(this, $http);
 	}
 
 	authenticateUser(email, pass) {
 		let params = {
-			grant_type 		: 'password',
-			username 	 		: email,
-			password   		: pass,
-			client_id  		: this.sysConfig.client_id,
-			client_secret : this.sysConfig.client_secret,
+			username: email,
+			password: pass,
 		};
 
 		let post = $.param(params);
-		return HTTP.get(this).post(this.sysConfig.apiServer + 'o/token/', post).then(result =>  result.data );
+		return HTTP.get(this).post(this.sysConfig.apiServer + 'api/auth/login', post).then(result =>  result.data );
 	}
 
+	revokeSession() {
+		return HTTP.get(this).post(this.sysConfig.apiServer + 'api/auth/logout',{
+			'headers': {'Authorization' : 'Bearer ' + this.store.get('smrtpd_access_token')}
+		}).then(result =>  result.data );
+	}
 }

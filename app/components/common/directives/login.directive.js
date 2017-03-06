@@ -26,7 +26,7 @@ class LoginDirectiveController {
       ariaDescribedBy: 'modal-body',
       template: require('templates/common/login/login.modal.pug'),
       size: 'md',
-      controller: ($scope, AuthService, localStorageService) => {
+      controller: ($scope, $rootScope, AuthService, localStorageService) => {
         $scope.error = {};
         $scope.clientAuthenticate = function() {
           let input = $scope.input;
@@ -34,9 +34,13 @@ class LoginDirectiveController {
           $scope.error.invalidUserPassword = false;
 
           if( !_.isUndefined(input) && (!_.isEmpty(input.email) || !_.isEmpty(input.password)) ) {
-            AuthService.authenticateUser(input.email, input.password).then((data) => {
-              localStorageService.set('smrtpd_access_token', data.access_token);
+            AuthService.authenticateUser(input.email, input.password).then((results) => {
+              localStorageService.set('smrtpd_access_token', results.data.access_token);
               modalInstance.dismiss('cancel');
+
+              $rootScope.globals.user = {
+                'first_name' : "Test"
+              };
 
         		}, (error) => {
               $scope.error = {
