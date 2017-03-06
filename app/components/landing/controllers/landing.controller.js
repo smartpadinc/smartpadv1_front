@@ -3,7 +3,7 @@
 const AUTH = new WeakMap();
 
 export default class LandingController {
-	
+
 	constructor($scope, $timeout, systemConfig, localStorageService, AuthService) {
 		this.$scope 			= $scope;
 		this.$scope.input = {};
@@ -22,11 +22,8 @@ export default class LandingController {
 
 	}
 
-	login() {
-		let credentials = this.$scope.input;
-		AUTH.get(this).authenticateUser(credentials.email, credentials.password).then(() => {
-
-		});
+	logout() {
+		alert(1);
 	}
 
 }

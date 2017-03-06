@@ -230,7 +230,7 @@ p { margin: 0; }
 			margin-left: 12px;
 			float: left;
 
-			&.login {
+			&.login, &.logout {
 				border-left: 1px solid $white;
 				padding-left: 12px;
 			}

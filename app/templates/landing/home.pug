@@ -10,8 +10,9 @@ div.wrapper
             li: a.btn(href="#") About
             li: a.btn(href="#") Pricing
             li: a.btn(href="#") Find Roommates
-            li: a.btn.btn-orange(href="#") Sign Up
-            li.login: a.btn(ng-click='login.showModal()', ui-login) Login
+            li: a.btn.btn-orange(href="#", ng-if="!globals.user") Sign Up
+            li.login: a.btn(ng-click='login.showModal()', ui-login, ng-if="!globals.user") Login
+            li.logout: a.btn(ng-click='home.logout()') Log Out
 
       div.inner-wrapper.onepcssgrid-1200
         div.onerow
