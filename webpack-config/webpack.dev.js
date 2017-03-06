@@ -6,6 +6,7 @@ const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const basePath = function(dest) {
+  console.log(path.resolve(__dirname, '../' + dest));
   return path.resolve(__dirname, '../' + dest);
 };
 
@@ -45,7 +46,6 @@ let config = {
             { include: /\.pug/, loader: 'pug-html-loader', },
             {
                 test: /\.js?$/,
-                include: basePath('app'),
                 loader: 'babel',
                 query: {
                     cacheDirectory: true, //important for performance
@@ -57,7 +57,7 @@ let config = {
             {
                 test: /\.js?$/,
                 exclude: [
-                  /node_modules/,
+                  basePath('node_modules'),
                   basePath('libs'),
                 ],
                 loader: 'jshint'

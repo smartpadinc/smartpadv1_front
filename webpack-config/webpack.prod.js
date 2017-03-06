@@ -56,7 +56,7 @@ let config = {
         preLoaders: [
             {
                 test: /\.js?$/,
-                exclude: /node_modules/,
+                exclude: basePath('node_modules'),
                 loader: 'jshint'
             }
         ]
