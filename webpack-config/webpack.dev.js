@@ -6,7 +6,6 @@ const ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const basePath = function(dest) {
-  console.log(path.resolve(__dirname, '../' + dest));
   return path.resolve(__dirname, '../' + dest);
 };
 
