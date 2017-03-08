@@ -26,7 +26,7 @@ class LoginDirectiveController {
       ariaDescribedBy: 'modal-body',
       template: require('templates/common/login/login.modal.pug'),
       size: 'md',
-      controller: ($scope, $rootScope, AuthService, localStorageService) => {
+      controller: ($scope, $rootScope, $state, AuthService, localStorageService) => {
         $scope.error = {};
         $scope.clientAuthenticate = function() {
           let input = $scope.input;
@@ -38,9 +38,7 @@ class LoginDirectiveController {
               localStorageService.set('smrtpd_access_token', results.data.access_token);
               modalInstance.dismiss('cancel');
 
-              $rootScope.globals.user = {
-                'first_name' : "Test"
-              };
+              $rootScope.globals.user = results.data.userinfo;
 
         		}, (error) => {
               $scope.error = {

@@ -9,7 +9,7 @@ export default class LandingController {
 		this.$scope 			= $scope;
 		this.$scope.input = {};
 
-		this.localStorageService = localStorageService;
+		this.store = localStorageService;
 
 		AUTH.set(this, AuthService);
 
@@ -27,12 +27,13 @@ export default class LandingController {
 
 	logout() {
 		this.$rootScope.globals.user = null;
+		let token = this.store.get('smrtpd_access_token');
 
-		AUTH.get(this).revokeSession().then(data => {
+		AUTH.get(this).revokeSession(token).then(data => {
 			console.log("[Debug] Logout returned data", data);
-
+			
 			// Clear session
-			this.localStorageService.remove('smrtpd_access_token');
+			this.store.remove('smrtpd_access_token');
 
 		});
 	}

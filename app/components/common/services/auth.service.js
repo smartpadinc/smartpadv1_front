@@ -21,9 +21,9 @@ export default class AuthService {
 		return HTTP.get(this).post(this.sysConfig.apiServer + 'api/auth/login', post).then(result =>  result.data );
 	}
 
-	revokeSession() {
-		return HTTP.get(this).post(this.sysConfig.apiServer + 'api/auth/logout',{
-			'headers': {'Authorization' : 'Bearer ' + this.store.get('smrtpd_access_token')}
+	revokeSession(token) {
+		return HTTP.get(this).post(this.sysConfig.apiServer + 'api/auth/logout',{},{
+			headers: {'Authorization' : 'Bearer ' + token}
 		}).then(result =>  result.data );
 	}
 }
