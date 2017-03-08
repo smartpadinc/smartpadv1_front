@@ -9,7 +9,7 @@ export default class AppConfig {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
-      .state('/', {
+      .state('home', {
        url: "/",
        views: {
          "main": {
@@ -50,8 +50,6 @@ export default class AppConfig {
     $http.get(systemConfig.apiServer + 'api/user/account/').then(result => {
       $rootScope.globals.user = result;
     });
-
-
 
 
   }
