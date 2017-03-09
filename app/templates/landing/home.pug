@@ -10,8 +10,9 @@ div.wrapper
             li: a.btn(href="#") About
             li: a.btn(href="#") Pricing
             li: a.btn(href="#") Find Roommates
-            li: a.btn.btn-orange(href="#") Sign Up
-            li.login: a.btn(href="#") Login
+            li: a.btn.btn-orange(href="#", ng-if="!globals.user") Sign Up
+            li.login: a.btn(ng-click='login.showModal()', ui-login, ng-if="!globals.user") Login
+            li.logout: a.btn(ng-click='home.logout()', ng-if="globals.user") Log Out
 
       div.inner-wrapper.onepcssgrid-1200
         div.onerow
@@ -94,9 +95,9 @@ div.wrapper
           div.col6.last
             h3 Subscribe and hear from us
             form.ro-form
-              input.col12.last.form-field(type="text", placeholder="Your Name")
-              input.col12.last.form-field(type="text", placeholder="Your Email")
-              button.btn.btn-submit Submit
+              input.col12.last.form-field#testid(type="text", placeholder="Your Name", ng-model="input.email")
+              input.col12.last.form-field(type="text", placeholder="Your Email", ng-model="input.password")
+              button.btn.btn-submit(ng-click="home.login()") Submit
 
 footer
   div.onepcssgrid-1200.footer-wrapper
@@ -114,3 +115,5 @@ footer
           a.icon#twitter(href="#")
         p.email.
           hello@smartpad.ph
+
+//- div(uib-timepicker ng-model="mytime" hour-step="15" minute-step="1" show-meridian="true")

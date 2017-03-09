@@ -1,13 +1,17 @@
 {
   "browser": true,
   "globals": {
+    "alert": false,
     "console":false,
     "$": false,
+    "jQuery": false,
     "node": false,
     "__dirname": false,
     "require": false,
     "module": false,
-    "process": false
+    "process": false,
+    "_":false,
+    "moment": false
   },
   "strict": "global",
   "esversion": 6
