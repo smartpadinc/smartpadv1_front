@@ -26,4 +26,8 @@ export default class AuthService {
 			headers: {'Authorization' : 'Bearer ' + token}
 		}).then(result =>  result.data );
 	}
+
+	testCall() {
+		return "ASDDS";
+	}
 }

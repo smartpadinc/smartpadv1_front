@@ -31,11 +31,15 @@ export default class LandingController {
 
 		AUTH.get(this).revokeSession(token).then(data => {
 			console.log("[Debug] Logout returned data", data);
-			
+
 			// Clear session
 			this.store.remove('smrtpd_access_token');
 
 		});
+	}
+
+	test() {
+		return 1;
 	}
 
 }
