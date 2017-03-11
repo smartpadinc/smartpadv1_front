@@ -36,10 +36,6 @@ let config = {
         {
             test: /\.js?$/,
             loader: 'babel',
-            query: {
-                cacheDirectory: true, //important for performance,
-                presets: ["es2015"]
-            }
         }
       ],
       preLoaders: [
