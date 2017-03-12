@@ -21,6 +21,7 @@ let config = {
   resolve: {
       alias: {
         'base'        : basePath(''),
+        'app'         : basePath('app'),
         'libs'        : basePath('libs'),
         'assets'      : basePath('assets'),
         'build'       : basePath('build'),
