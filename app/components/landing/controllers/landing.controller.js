@@ -8,6 +8,9 @@ export default class LandingController {
 		this.$rootScope   = $rootScope;
 		this.$scope 			= $scope;
 		this.$scope.input = {};
+		this.$scope.test  = {
+			'firstname': "leo"
+		};
 
 		this.store = localStorageService;
 
